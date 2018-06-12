@@ -61,7 +61,7 @@ For help with installation of the Azure Stack Development Kit, review the follow
     ```
     cd C:\AzureStackOnAzureVM
 
-    .\Install-ASDK,.ps1
+    .\Install-ASDK.ps1
     ```
 
 When prompted enter:
