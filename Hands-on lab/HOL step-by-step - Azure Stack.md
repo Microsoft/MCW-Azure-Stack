@@ -600,11 +600,11 @@ https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-sql-resource-prov
 
     ![Screenshot of the prod-offer-1 option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image84.png "prod-offer-1 option")
 
-18. Notice the portal shows a warning stating: "**This offer is private, and users cannot see it**." To fix this, click the **Change state** button.
+18. After the creation, the offer's "Accessibility state" is set to "Private" by default.
 
     ![In the Offer blade, warning displays, and the Change state button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image85.png "Offer blade")
 
-19. Select **Public**
+19. To change the "Accessibility state", click on 1) "Offer settings", Select 2) **Public** and click on 3) "Save".
 
     ![Public is selected in the Change state menu.](images/Hands-onlabstep-by-step-AzureStackimages/media/image86.png "Change state menu")
 
