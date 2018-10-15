@@ -381,6 +381,14 @@ When prompted specify the following:
 -   App Service Publisher certificate file (\*.pfx): C:\\HOL\\AppServiceHelperScripts\\ftp.appservice.local.azurestack.external.pfx
 
     ![The Microsoft Azure App Service 1.1 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image46.png "Microsoft Azure App Service 1.1 window")
+   
+11. Login to SqlServerVM which you deployed in Azure Stack Administrator portal. Luanch Microsoft SQL Sever Management Studio 2017, connect with local database and select master database. Run the following query.
+      ```sp_configure 'contained database authentication', 1;
+         GO
+         RECONFIGURE;
+         GO```
+    
+   ![The Microsoft Azure App Service 1.1 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image167.jpg "Microsoft Azure App Service 1.1 window")
 
 11. On the next screen, specify the public IP and the credentials for your SQL Server VM and click **Next**
 
