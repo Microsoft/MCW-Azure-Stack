@@ -391,19 +391,19 @@ When prompted specify the following:
     
     ![The Microsoft Azure App Service 1.1 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image167.jpg "Microsoft Azure App Service 1.1 window")
 
-11. On the next screen, specify the public IP and the credentials for your SQL Server VM and click **Next**
+12. On the next screen, specify the public IP and the credentials for your SQL Server VM and click **Next**
 
     ![The Microsoft Azure App Service 1.1 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image47.png "Microsoft Azure App Service 1.1 window")
 
-12. Accept the defaults for the VMs to provision for the App Service resource provider by clicking **Next**
+13. Accept the defaults for the VMs to provision for the App Service resource provider by clicking **Next**
 
     ![The Microsoft Azure App Service 1.1 fields are set to the default settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image48.png "Microsoft Azure App Service 1.1 window")
 
-13. Except the default for the platform image by clicking **Next**
+14. Except the default for the platform image by clicking **Next**
 
     ![The default platform image displays in the Microsoft Azure App Service 1.1 window.](images/Hands-onlabstep-by-step-AzureStackimages/media/image49.png "Microsoft Azure App Service 1.1 window")
 
-14. Specify the following user account for both administrator accounts and click Next
+15. Specify the following user account for both administrator accounts and click Next
 
 -   User name: appserviceadmin
 
@@ -411,11 +411,11 @@ When prompted specify the following:
 
     ![The Microsoft Azure App Service 1.1 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image50.png "Microsoft Azure App Service 1.1 window")
 
-15. Click the Checkbox next to Select and click next to start the deployment and then click **Next**
+16. Click the Checkbox next to Select and click next to start the deployment and then click **Next**
 
     ![The Microsoft Azure App Service 1.1 window displays with a summary of settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image51.png "Microsoft Azure App Service 1.1 window")
 
-16. The final step is to validate the App Service on Azure Stack installation. TO validate the App Service installation perform the following 2 steps:
+17. The final step is to validate the App Service on Azure Stack installation. TO validate the App Service installation perform the following 2 steps:
 
     -   In the Azure Stack admin portal, go to **Administration - App Service**
 
