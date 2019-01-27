@@ -1007,7 +1007,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack port
 
     -   Value: Enter the **HTTPS** URL for the Offers API App with **/api/get** appended to the end.
     
-    Example: <https://contosofinanceapi.azurewebsites.net/api/get>
+    Example: <https://contosofinanceapi.appservice.local.azurestack.external/api/get>
 
        ![Under App settings, offersAPIUrl and its URL are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image136.png)
 
