@@ -32,14 +32,14 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
     - [Help references](#help-references)
     - [Requirements](#requirements)
     - [Exercise 1: Configure Azure Stack](#exercise-1-configure-azure-stack)
-        - [Task 1: Deploy the Azure Stack App Service Resource Provider](#task-1-deploy-the-azure-stack-app-service-resource-provider)
+        - [Task 1: Deploy the Azure App Service on Azure Stack Resource Provider](#task-1-deploy-the-azure-stack-app-service-resource-provider)
             - [Sub Task 1: Download the Installer and Scripts](#sub-task-1-download-the-installer-and-scripts)
-            - [Sub Task 2: Create App Service Scripts](#sub-task-2-create-app-service-scripts)
+            - [Sub Task 2: Create Certificates for the Azure App Service RP](#sub-task-2-create-app-service-scripts)
             - [Sub Task 3: Deploy Supporting File Server](#sub-task-3-deploy-supporting-file-server)
             - [Sub Task 4: Deploying a Supporting SQL Server](#sub-task-4-deploying-a-supporting-sql-server)
             - [Sub Task 5: Enable Contained Database Authentication](#sub-task-5-enable-contained-database-authentication)
             - [Sub Task 6: Setup Application Identity](#sub-task-6-setup-application-identity)
-            - [Sub Task 7: Install the App Service Resource Provider](#sub-task-7-install-the-app-service-resource-provider)
+            - [Sub Task 7: Install the Azure App Service Resource Provider](#sub-task-7-install-the-app-service-resource-provider)
         - [Task 2: Deploy the Azure Stack SQL DB Resource Provider](#task-2-deploy-the-azure-stack-sql-db-resource-provider)
         - [Task 3: Create Azure Stack Deployment Taxonomy for Tenets](#task-3-create-azure-stack-deployment-taxonomy-for-tenets)
     - [Exercise 2: Deploy the SQL Hosting Server and DB on Azure Stack](#exercise-2-deploy-the-sql-hosting-server-and-db-on-azure-stack)
@@ -124,7 +124,7 @@ In this exercise, you will configure the Azure Stack environment for the lab. Yo
 
     ![In the Azure Stack Host File Explorer, a callout points to the AppService executable.](images/Hands-onlabstep-by-step-AzureStackimages/media/image25.png)
 
-#### Sub Task 2: Create App Service Scripts
+#### Sub Task 2: Create Certificates for the Azure App Service RP
 
 1.  Change to the **AppServiceHelperScripts** folder by executing the following command in an elevated PowerShell console:
 
@@ -349,7 +349,7 @@ When prompted specify the following:
 
 7.  Select **Grant Permissions** and click **Yes**.
 
-#### Sub Task 7: Install the App Service Resource Provider
+#### Sub Task 7: Install the Azure App Service Resource Provider
 
 > **Note:** Before you start the steps below, you need to download the custom script extension v1.9.0 from azure market place into your Azure Stack Market Place Management.
 
