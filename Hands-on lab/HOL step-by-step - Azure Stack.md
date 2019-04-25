@@ -328,7 +328,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 2.  Click **Deploy App Service or upgrade to the latest version**.
 
-    ![In the Microsoft Azure App Service installer, the Deploy App Service or upgrade to the latest version radio button is called out.](imags/hands-onlabstep-by-step-AzureStackimages/media/image40.png)
+    ![In the Microsoft Azure App Service installer, the Deploy App Service or upgrade to the latest version radio button is called out.](imags/hands-onlabstep-by-step-AzureStackimages/media/app-service-installer.png)
 
 
 3.  Review and accept the Microsoft Software License Terms and then click **Next**.
@@ -337,15 +337,15 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 5.  Review the settings and click **Next**.
 
-    ![In the Microsoft Azure App Service window, App Service Installer fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/image41.png)
+    ![In the Microsoft Azure App Service window, App Service Installer fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/app-service-azure-stack-arm-endpoints.png)
 
 6.  Click Connect, and then specify your Azure subscription information. After logging in, click the dropdown by the subscription and location dropdown to specify the correct configuration.
 
-    ![Fields in the Microsoft Azure App Service installer window display Azure App Service information.](images/Hands-onlabstep-by-step-AzureStackimages/media/image42.png)
+    ![Fields in the Microsoft Azure App Service installer window display Azure App Service information.](images/Hands-onlabstep-by-step-AzureStackimages/media/app-service-azure-stack-subscription-information.png)
 
 7.  Accept the defaults on the network configuration by clicking next.
 
-    ![Microsoft Azure App Service installer network configuration fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/image43.png)
+    ![Microsoft Azure App Service installer network configuration fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/ap-service-default-vnet-config.png)
 
 8.  Specify the following configuration for the file share:
 
@@ -371,7 +371,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
     -   Azure Resource Manager (ARM) root certificate file (\*.cer): **C:\\HOL\\AzureStackCertificationAuthority.cer**
 
-    ![The Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image45.png)
+    ![The Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/app-service-identity-app.png)
 
 10. On the next page you will specify the remaining certificates:
 
@@ -407,7 +407,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 15. Click the Checkbox next to Select and click next to start the deployment and then click **Next**.
 
-    ![The Microsoft Azure App Service Installer window displays with a summary of settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image51.png)
+    ![The Microsoft Azure App Service Installer window displays with a summary of settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/app-service-azure-stack-deployment-summary.png)
 
     >**Note**: It may take up to 60 minutes to complete.
 
