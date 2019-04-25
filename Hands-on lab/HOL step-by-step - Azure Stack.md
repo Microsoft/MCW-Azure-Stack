@@ -280,7 +280,7 @@ When prompted use the following values:
 
 #### Sub Task 6: Setup Application Identity
 
-1.  Switch back to the Azure Stack host to configure an Azure AD Service Principal for Azure Functions.
+1.  Switch back to the Azure Stack host to configure an Azure AD Service Principal which enables the Azure Functions portal experience and single-sign into Kudu Dev Tools.
 
 2.  Launch an elevated PowerShell instance (ensure you are logged in as azurestack\\AzureStackAdmin) and run the following commands:
 
@@ -320,7 +320,7 @@ When prompted specify the following:
 
 #### Sub Task 7: Install the Azure App Service Resource Provider
 
-> **Note:** Before you start the steps below, you need to download the custom script extension v1.9.0 from azure market place into your Azure Stack Market Place Management.
+> **Note:** Before you start the steps below, you need to download the custom script extension v1.9.1 from azure market place into your Azure Stack Market Place Management.
 
 Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom Script Extension - Click Download.** It will take few minutes. Once completed move on with the steps below.**  
 
@@ -328,7 +328,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 2.  Click **Deploy App Service or upgrade to the latest version**.
 
-    ![In the Microsoft Azure App Service 1.3 window, the Deploy App Service or upgrade to the latest version radio button is called out.](imags/hands-onlabstep-by-step-AzureStackimages/media/image40.png)
+    ![In the Microsoft Azure App Service installer, the Deploy App Service or upgrade to the latest version radio button is called out.](imags/hands-onlabstep-by-step-AzureStackimages/media/image40.png)
 
 
 3.  Review and accept the Microsoft Software License Terms and then click **Next**.
@@ -341,11 +341,11 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 6.  Click Connect, and then specify your Azure subscription information. After logging in, click the dropdown by the subscription and location dropdown to specify the correct configuration.
 
-    ![Fields in the Microsoft Azure App Service 1.3 window display Azure App Service information.](images/Hands-onlabstep-by-step-AzureStackimages/media/image42.png)
+    ![Fields in the Microsoft Azure App Service installer window display Azure App Service information.](images/Hands-onlabstep-by-step-AzureStackimages/media/image42.png)
 
 7.  Accept the defaults on the network configuration by clicking next.
 
-    ![Microsoft Azure App Service 1.3 network configuration fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/image43.png)
+    ![Microsoft Azure App Service installer network configuration fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/image43.png)
 
 8.  Specify the following configuration for the file share:
 
@@ -359,7 +359,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 -   File Share User Password: **demo\@pass123**
 
-    ![Microsoft Azure App Service 1.3 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image44.png)
+    ![Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image44.png)
 
 9.  On the next screen, paste in the application id created earlier and specify the following certificate information:
 
@@ -371,7 +371,7 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
     -   Azure Resource Manager (ARM) root certificate file (\*.cer): **C:\\HOL\\AzureStackCertificationAuthority.cer**
 
-    ![The Microsoft Azure App Service 1.3 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image45.png)
+    ![The Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image45.png)
 
 10. On the next page you will specify the remaining certificates:
 
@@ -381,21 +381,21 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
     -   App Service Publisher certificate file (\*.pfx): C:\\HOL\\AppServiceHelperScripts\\ftp.appservice.local.azurestack.external.pfx
 
-    ![The Microsoft Azure App Service 1.3 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image46.png)
+    ![The Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image46.png)
 
 > **Note:** The password for all three above services is demo@pass123.
 
 11. On the next screen, specify the public IP and the credentials for your SQL Server VM and click **Next**.
 
-    ![The Microsoft Azure App Service 1.3 fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image47.png)
+    ![The Microsoft Azure App Service installer fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image47.png)
 
 12. Accept the defaults for the VMs to provision for the App Service resource provider by clicking **Next**.
 
-    ![The Microsoft Azure App Service 1.3 fields are set to the default settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image48.png)
+    ![The Microsoft Azure App Service installer fields are set to the default settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image48.png)
 
 13. At the Select Platform Image - select the 2016- Datacenter-latest from the drop down list and click **Next**.
 
-    ![The Microsoft Azure App Service 1.3 fields are set to the default settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image048.png)
+    ![The Microsoft Azure App Service installer fields are set to the default settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image048.png)
 
 14. Specify the following user account for both administrator accounts and click Next.
 
@@ -403,11 +403,11 @@ Go to your **Azure Stack Marketplace Management - +Add from Azure - Type Custom 
 
 -   Password: **demo\@pass123** (Keep same Worker role VM Admin and Other Role VM Admin)
 
-    ![The Microsoft Azure App Service 1.3 window displays the roles and passwords for the app service cloud.](images/Hands-onlabstep-by-step-AzureStackimages/media/image49.png)
+    ![The Microsoft Azure App Service installer window displays the roles and passwords for the App Service cloud.](images/Hands-onlabstep-by-step-AzureStackimages/media/image49.png)
 
 15. Click the Checkbox next to Select and click next to start the deployment and then click **Next**.
 
-    ![The Microsoft Azure App Service 1.1 window displays with a summary of settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image51.png)
+    ![The Microsoft Azure App Service Installer window displays with a summary of settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image51.png)
 
     >**Note**: It may take up to 60 minutes to complete.
 
