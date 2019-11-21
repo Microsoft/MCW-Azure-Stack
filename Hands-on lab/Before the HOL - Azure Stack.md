@@ -113,7 +113,7 @@ In this task you will execute a script that will configure Azure Stack with many
 
     # Download the ConfigASDK Script.
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-Webrequest http://bit.ly/configasdk -UseBasicParsing -OutFile ConfigASDK.ps1
+    Invoke-Webrequest http://bit.ly/AzSPoC -UseBasicParsing -OutFile ConfigASDK.ps1
     ```
 
 4. Execute the script to configure the Azure SDK (ensure you replace the [placeholder values]). 
