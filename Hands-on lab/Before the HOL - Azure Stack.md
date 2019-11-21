@@ -101,19 +101,19 @@ In this task you will execute a script that will configure Azure Stack with many
 2. The script requires the Windows 2016 Evaluation ISO for the Azure Stack Images. Download the ISO with the following command:
 
     ```PowerShell
-    Start-BitsTransfer -Source https://cloudworkshop.blob.core.windows.net/azure-stack/iso/win2016eval.iso -Destination D:\win2016eval.iso
+    Start-BitsTransfer -Source https://cloudworkshop.blob.core.windows.net/azure-stack/iso/win2016eval.iso -Destination D:\WS2016EVALISO.iso
     ```
 
 3. Download the ConfigASDK Script:
 
     ```PowerShell
     # Create directory on the root drive.
-    New-Item -ItemType Directory -Force -Path "C:\ConfigASDK"
-    Set-Location "C:\ConfigASDK"
+    New-Item -ItemType Directory -Force -Path "C:\AzSPoC"
+    Set-Location "C:\AzSPoC"
 
     # Download the ConfigASDK Script.
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-Webrequest http://bit.ly/AzSPoC -UseBasicParsing -OutFile ConfigASDK.ps1
+    Invoke-Webrequest http://bit.ly/AzSPoC -UseBasicParsing -OutFile AzSPoC.ps1
     ```
 
 4. Execute the script to configure the Azure SDK (ensure you replace the [placeholder values]). 
@@ -124,10 +124,10 @@ In this task you will execute a script that will configure Azure Stack with many
     ```PowerShell
     New-Item -ItemType Directory -Force -Path "D:\ASDKINSTALL"
     
-    .\ConfigASDK.ps1 -azureDirectoryTenantName "[tenant].onmicrosoft.com" -authenticationType AzureAD `
-    -downloadPath "D:\ASDKINSTALL" -ISOPath "D:\win2016eval.iso" -azureStackAdminPwd 'demo@pass123' `
-    -VMpwd 'demo@pass123' -azureAdUsername "[youruser]@[tenant].onmicrosoft.com" -azureAdPwd '[your user password]' `
-    -registerASDK -useAzureCredsForRegistration -azureRegSubId "[Your Azure Subscription ID]"
+    .\AzSPoC.ps1 -azureDirectoryTenantName "contoso.onmicrosoft.com" -authenticationType AzureAD `
+    -downloadPath "D:\ASDKfiles" -ISOPath "D:\WS2016EVALISO.iso" -asdkHostPwd 'Passw0rd123!' `
+    -VMpwd 'Passw0rd123!' -azureAdUsername "admin@contoso.onmicrosoft.com" -azureAdPwd 'Passw0rd123!' `
+    -registerAzS -useAzureCredsForRegistration -azureRegSubId "01234567-abcd-8901-234a-bcde5678fghi"
     ```
 
 
