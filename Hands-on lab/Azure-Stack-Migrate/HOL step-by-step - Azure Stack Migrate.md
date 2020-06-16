@@ -97,45 +97,45 @@ Duration: 15-30 minutes
 
 ![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
 
-1.  Within the Remote Desktop session to **AzSHOST-1**, start Internet Explorer and navigate to <https://adminportal.local.azurestack.external>.
+1. Within the Remote Desktop session to **AzSHOST-1**, start a browser and navigate to <https://adminportal.local.azurestack.external>.
 
-2.  When prompted, sign in with the **AzSHOperator** you created when following the **Before the hands-on lab guide**.
+2. When prompted, sign in with the **AzSHOperator** you created when following the **Before the hands-on lab guide**.
 
-3.  Select **+Create a resource** in the Azure Stack Hub administrator portal.
+3. Select **+Create a resource** in the Azure Stack Hub administrator portal.
 
-4.  Select **Offers + Plans** followed by **Plan**, followed by **Create**.
+4. Select **Offers + Plans** followed by **Plan**, followed by **Create**.
 
     ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Plan is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image70.png "Featured Apps blade")
 
-5.  In the New Plan blade, provide the following inputs:
+5. In the New Plan blade, provide the following inputs:
 
-    -   Display name: **PROD-Plan-1**
+    - Display name: **PROD-Plan-1**
 
-    -   Resource name: **prod-plan-1**
+    - Resource name: **prod-plan-1**
 
-    -   Resource group (Create new): **ContosoFinance**
+    - Resource group (Create new): **ContosoFinance**
 
     ![New plan blade, fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image71.png "New plan blade")
 
-6.  Select **Services**.
+6. Select **Services**.
 
     ![Screenshot of the Services option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image72.png "Select services")
 
-7.  Next, check all of the **Services** except for **Microsoft.MySQLAdapter** and **Microsoft.Subscriptions** and select **Next: Quotas**.
+7. Next, check all of the **Services** except for **Microsoft.MySQLAdapter** and **Microsoft.Subscriptions** and select **Next: Quotas**.
 
     ![Services are listed in the Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
 
-8.  For Quotas, go through and choose the default quotas with exception of the Microsoft.SQLAdapter entry. Next, select **Create New** next to the Microsft.SQLAdapter entry.
+8. For Quotas, go through and choose the default quotas with exception of the Microsoft.SQLAdapter entry. Next, select **Create New** next to the Microsft.SQLAdapter entry.
 
     ![The Quotas blade displays with Microsoft SQL Adapter selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
-9.  On the **Create Quota** blade, specify the following information and select **Create**:
+9. On the **Create Quota** blade, specify the following information and select **Create**:
 
-    -   Quota Name: **SQLQuota**
+    - Quota Name: **SQLQuota**
 
-    -   Maximum size of all Databases (GB): **50**
+    - Maximum size of all Databases (GB): **50**
 
-    -   Maximum number of databases: **20**
+    - Maximum number of databases: **20**
 
     ![The Create Quota tab displays the specified settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image77.png "Create Quota blade")
 
@@ -149,35 +149,35 @@ Duration: 15-30 minutes
 
    ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Offer is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image81.png "Marketplace blade")
 
-13.  Update the New offer blade using the following inputs. Then, select **Next: Base plans**.
+13. Update the New offer blade using the following inputs. Then, select **Next: Base plans**.
 
-   -   Display Name: **PROD-Offer-1**
+    - Display Name: **PROD-Offer-1**
 
-   -   Resource Name: **prod-offer-1**
+    - Resource Name: **prod-offer-1**
 
-   -   Resource group: **Use existing / ContosoFinance**
+    - Resource group: **Use existing / ContosoFinance**
 
-   -   Make this offer public? **No**
+    - Make this offer public? **No**
 
    ![Fields in the New Offer blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image82.png "New Offer blade")
 
-14.  On the **Base plans** blade, check **PROD-Plan-1** and select **Review + create** and then **Create**.
+14. On the **Base plans** blade, check **PROD-Plan-1** and select **Review + create** and then **Create**.
 
    ![Screenshot of the Resource group blade. Under Name, a callout points to prod-offer-1.](images/Hands-onlabstep-by-step-AzureStackimages/media/image83.png "Resource group blade")
 
-15.  Open the new offer after it is created. Notice the portal shows a warning stating: "**This offer is private, and users cannot see it**." To fix this, select the **Change state** button.
+15. Open the new offer after it is created. Notice the portal shows a warning stating: "**This offer is private, and users cannot see it**." To fix this, select the **Change state** button.
 
    ![In the Offer blade, warning displays, and the Change state button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image85.png "Offer blade")
 
-16.  Select **Public**.
+16. Select **Public**.
 
    ![Public is selected in the Change state menu.](images/Hands-onlabstep-by-step-AzureStackimages/media/image86.png "Change state menu")
 
-17.  The portal will immediately provide a notification about the update to the offer.
+17. The portal will immediately provide a notification about the update to the offer.
 
    ![Updated offer successfully message screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image87.png "Success")
 
-18.  Next, open a new browser tab, and navigate to Azure Stack Hub User portal and select **Get Subscription**.
+18. Next, open a new browser tab, and navigate to Azure Stack Hub User portal and select **Get Subscription**.
 
     ```
     https://portal.local.azurestack.external
@@ -188,11 +188,11 @@ Duration: 15-30 minutes
    > **Note**: This is the User portal Contoso Finance will use to provision and manage their Azure Stack Hub service.
 
 
-19.  Give it the name: **Production** and select the **PROD-Offer-1** and select **Create**.
+19. Give it the name: **Production** and select the **PROD-Offer-1** and select **Create**.
 
    ![In the Get a subscription blade, the Display name is Production. In the Choose an offer blade, PROD-Offer-1 is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image90.png "Get a subscription blade")
 
-20.  You will need to Refresh the window to start using the new Subscription.
+20. You will need to Refresh the window to start using the new Subscription.
 
    ![Under the Subscription created message, the Refresh button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image91.png "Refresh")
 
