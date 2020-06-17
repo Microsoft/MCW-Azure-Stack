@@ -97,17 +97,17 @@ Duration: 15-30 minutes
 
 ![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
 
-1. Within the Remote Desktop session to **AzSHOST-1**, start a browser and navigate to <https://adminportal.local.azurestack.external>.
+1. Within the Remote Desktop session to **AzSHOST-1**, start a browser and navigate to the **Azure Stack Admin Portal** via the desktop icon.
 
-2. When prompted, sign in with the **AzSHOperator** you created when following the **Before the hands-on lab guide**.
+2. When prompted, sign in with the **AzSHOperator** account you created when following the **Before the hands-on lab guide**.
 
-3. Select **+Create a resource** in the Azure Stack Hub administrator portal.
+3. Select **+ Create a resource** on the left. 
 
-4. Select **Offers + Plans** followed by **Plan**, followed by **Create**.
+4. Select **Offers + Plans** followed by **Plan**.
 
     ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Plan is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image70.png "Featured Apps blade")
 
-5. In the New Plan blade, provide the following inputs:
+5. In the New Plan blade, enter the following configuration then click **Next: Services**.
 
     - Display name: **PROD-Plan-1**
 
@@ -117,19 +117,15 @@ Duration: 15-30 minutes
 
     ![New plan blade, fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image71.png "New plan blade")
 
-6. Select **Services**.
-
-    ![Screenshot of the Services option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image72.png "Select services")
-
-7. Next, check all of the **Services** except for **Microsoft.MySQLAdapter** and **Microsoft.Subscriptions** and select **Next: Quotas**.
+6. Next, check all of the **Services** except for **Microsoft.MySQLAdapter** and **Microsoft.Subscriptions** and select **Next: Quotas**.
 
     ![Services are listed in the Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
 
-8. For Quotas, go through and choose the default quotas with exception of the Microsoft.SQLAdapter entry. Next, select **Create New** next to the Microsft.SQLAdapter entry.
+7. For Quotas, go through and choose the default quotas where available with the exception of the **Microsoft.SQLAdapter** entry. Next, select **Create New** next to the **Microsoft.SQLAdapter** entry.
 
     ![The Quotas blade displays with Microsoft SQL Adapter selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
-9. On the **Create Quota** blade, specify the following information and select **Create**:
+8. On the **Create Quota** blade, specify the following information and select **Create**:
 
     - Quota Name: **SQLQuota**
 
@@ -139,7 +135,7 @@ Duration: 15-30 minutes
 
     ![The Create Quota tab displays the specified settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image77.png "Create Quota blade")
 
-10. Select **Review + Create** and then confirm the creation. 
+9.  Select **Review + Create** and then confirm the creation. 
 
    ![The Quotas tab of the New plan blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image79.png "Quotas tab of the New plan blade")
 
