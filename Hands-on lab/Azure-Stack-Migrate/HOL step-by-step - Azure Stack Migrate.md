@@ -121,13 +121,13 @@ Duration: 15-30 minutes
 
     ![Services are listed in the Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
 
-7. For Quotas, go through and choose the default quotas where available with the exception of the **Microsoft.SQLAdapter** entry. Next, select **Create New** next to the **Microsoft.SQLAdapter** entry.
+7. For Quotas, go through and choose the default quotas where available with the exception of the **Microsoft.Web** entry. Next, select **Create New** next to the **Microsoft.Web** entry.
 
     ![The Quotas blade displays with Microsoft SQL Adapter selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
 8. On the **Create Quota** blade, specify the following information and select **Create**:
 
-    - Quota Name: **SQLQuota**
+    - Quota Name: **WebQuota**
 
     - Maximum size of all Databases (GB): **50**
 
