@@ -123,41 +123,37 @@ Duration: 15-30 minutes
 
 7. For Quotas, go through and choose the default quotas where available with the exception of the **Microsoft.Web** entry. Next, select **Create New** next to the **Microsoft.Web** entry.
 
-    ![The Quotas blade displays with Microsoft SQL Adapter selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
+    ![The Quotas blade](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
-8. On the **Create Quota** blade, specify the following information and select **Create**:
+8. On the **Create Quota** blade, specify the following information and select **Ok**:
 
-    - Quota Name: **WebQuota**
+    - Name: **WebQuota**
 
-    - Maximum size of all Databases (GB): **50**
-
-    - Maximum number of databases: **20**
+    - App Service Plans: **20**
 
     ![The Create Quota tab displays the specified settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image77.png "Create Quota blade")
 
-9.  Select **Review + Create** and then confirm the creation. 
+9. Select **Review + Create** and then confirm the creation by selecting **Create**. The Plan will deploy immediately. 
 
    ![The Quotas tab of the New plan blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image79.png "Quotas tab of the New plan blade")
 
-11. Select **+ Create a resource** followed by **Create** in the Azure Stack Hub administrator portal. The Plan will deploy immediately.
-
-12. Select **Offers + Plans** followed by **Offer**.
+10. Select **+ Create a resource** on the left then select **Offers + Plans** followed by **Offer**.
 
    ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Offer is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image81.png "Marketplace blade")
 
-13. Update the New offer blade using the following inputs. Then, select **Next: Base plans**.
+11. Update the New offer blade using the following inputs. Then, select **Next: Base plans**.
 
     - Display Name: **PROD-Offer-1**
 
     - Resource Name: **prod-offer-1**
 
-    - Resource group: **Use existing / ContosoFinance**
+    - Resource group: **ContosoFinance**
 
     - Make this offer public? **No**
 
    ![Fields in the New Offer blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image82.png "New Offer blade")
 
-14. On the **Base plans** blade, check **PROD-Plan-1** and select **Review + create** and then **Create**.
+12. On the **Base plans** blade, check **PROD-Plan-1** and select **Review + create** and then **Create**.
 
    ![Screenshot of the Resource group blade. Under Name, a callout points to prod-offer-1.](images/Hands-onlabstep-by-step-AzureStackimages/media/image83.png "Resource group blade")
 
@@ -173,7 +169,7 @@ Duration: 15-30 minutes
 
    ![Updated offer successfully message screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image87.png "Success")
 
-18. Next, open a new browser tab, and navigate to Azure Stack Hub User portal and select **Get Subscription**.
+18. Next, open a new browser tab, and navigate to Azure Stack Hub User portal and select **Get a subscription**.
 
     ```
     https://portal.local.azurestack.external
@@ -201,61 +197,59 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 ### Task 1: Create the Web App
 
-1.  From within the Azure Stack Hub User portal, select **+Create a resource -\> Web + Mobile -\> Web App.**
+1. From within the Azure Stack Hub User portal, select **+ Create a resource -\> Web + Mobile -\> Web App.**
 
-2.  On the **Web App** blade, select **App Service plan/Location**.
+2. On the **Web App** blade, select the **Production** subscription then select **App Service plan/Location**.
 
     ![App Service plan/Location option screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image110.png "App service plan")
 
-3.  Create a new App Service plan called **ContosoFinanceWebPlan** with the **D1 Shared** pricing tier and select **OK**.
+3. Create a new App Service plan called **ContosoFinanceWebPlan** with the **D1 Shared** pricing tier and select **OK**.
 
     ![Screenshot of the D1 Shared pricing tier option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image111.png "D1 pricing")
 
-4.  On the **Web App** blade, specify the following configuration, and select **Create**:
+4. On the **Web App** blade, specify the following configuration, and select **Create**:
 
-    -   App Name: **Specify a unique and valid URL (until the green check mark appears)**.
+    - App Name: **Specify a unique and valid name (until the green check mark appears)**.
 
-    -   Resource group: **ContosoFinanceWeb**
+    - Resource group: **(Create new) ContosoFinanceWeb**
 
     ![Create blade fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image112.png "Create blade")
 
 ### Task 2: Provision an Azure Storage Account
 
-1.  In the Azure Stack Hub User portal, select **+Create  a resource -\> Data + Storage -\> Storage account - blob, file, table, queue**.
+1. In the Azure Stack Hub User portal, select **+ Create  a resource -\> Data + Storage -\> Storage account - blob, file, table, queue**.
 
     ![In the New and Data and Storage blades, the previously defined options are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image113.png "New and Data and Storage blades")
 
-2.  On the **Basics** tab of the **Create storage account** blade, specify the following configuration options:
+2. On the **Basics** tab of the **Create storage account** blade, specify the following configuration options. Then select **Review + create** followed by **Create**.
 
-    -   Subscription: **Production**
+    - Subscription: **Production**
 
-    -   Resource group: **ContosoFinanceWeb**
+    - Resource group: **ContosoFinanceWeb**
 
-    -   Storage account name: **Unique value for the storage account (ensure the green check mark appears)**.
+    - Storage account name: **Unique value for the storage account (ensure the green check mark appears)**.
 
-    -   Location: **local**
+    - Location: **local**
 
-    -   Performance: **Standard**
+    - Performance: **Standard**
 
-    -   Account kind: **Storage (general purpose v1)**
+    - Account kind: **Storage (general purpose v1)**
 
-    -   Replication: **Locally-redundant storage (LRS)**
+    - Replication: **Locally-redundant storage (LRS)**
 
     ![Create storage account blade fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image114.png "Create storage account blade")
 
-3.  Select **Review + create** followed by **Create**.
+3. After the storage account has completed provisioning, open the storage account by selecting **Storage accounts** in the left navigation, and then select the storage account name.
 
-4.  After the storage account has completed provisioning, open the storage account by selecting **Storage accounts** in the left navigation, and then select the storage account name.
-
-5.  On the **Storage** account blade, scroll down, and select the **Access keys** option.
+4. On the **Storage** account blade, scroll down and select **Access keys** on the left under **Settings**. 
 
     ![Under Settings, Access keys is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image116.png "Access keys")
 
-6.  On the **Access keys** blade, select the copy button by **Key** to copy the **key1** key value. Paste the value into Notepad for later reference.
+5. On the **Access keys** blade, select the copy button by **Key** to copy the **key1** key value. Paste the value into Notepad for later reference.
 
     ![The key1 copy button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image117.png "copy button")
 
-7.  On the **Access keys** blade, select the copy button by **Connection string** to copy the **key1** connection string value. Paste the value into Notepad for later reference.
+6. On the **Access keys** blade, select the copy button by **Connection string** to copy the **key1** connection string value. Paste the value into Notepad for later reference.
 
     ![The Connection string copy button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image119.png "Connection string copy")
 
