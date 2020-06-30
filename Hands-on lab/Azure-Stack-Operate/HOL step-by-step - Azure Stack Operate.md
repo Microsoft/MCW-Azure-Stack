@@ -119,53 +119,51 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
 
 ### Task 1: Set up tools and artifacts for publishing custom Azure Stack Hub Marketplace items
 
-1.  From the AzS-Host1 Azure VM, start Internet Explorer and navigate to http://aka.ms/azurestackmarketplaceitem.
+1. From the AzS-Host1 Azure VM, start a browser and navigate to http://aka.ms/azurestackmarketplaceitem.
 
-2.  When prompted, download the archive file **Azure Stack Marketplace Item Generator and Sample.zip** to the **C:\Downloads** folder (create the folder if needed).
+2. When prompted, download the archive file **Azure Stack Marketplace Item Generator and Sample.zip** to the **C:\\Downloads** folder (create the folder if needed).
 
-3.  Once the download completes, start File Explorer, select the **View** menu item, and select **File name extensions**.
+3. Once the download completes, start File Explorer, select the **View** tab at the top, and select **File name extensions**.
 
     ![In the View ribbon of File Explorer, File name extensions checkbox is selected.](images/image1.png "View ribbon of File Explorer")
 
-4.  In File Explorer, navigate to the C:\Downloads folder, and extract the compressed content (the **Azure Stack Marketplace Item Generator and Sample** folder) into C:\Downloads.
+4. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample** folder, create a new folder named **ContosoWebAppTemplate** and copy the content of the **SampleVMTemplate** folder into it. 
 
-5.  In File Explorer, navigate to the **C:\Downloads\Azure Stack Marketplace Item Generator and Sample** folder, create a new folder named **ContosoWebAppTemplate** and copy the content of the **SampleVMTemplate** folder into it. 
+5. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\Icons** folder.
 
-6.  In File Explorer, navigate to the C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\Icons folder.
+6. Right-click the **Wide.png** image and select **Open with** -> **Paint**.
 
-7.  Right-click the **Wide.png** image, in the right-hand menu, and then select **Open with** -> **Paint**.
-
-8.  In the Microsoft Paint window, select **Resize**.
+7. In the Microsoft Paint window, select **Resize**.
 
     ![In the View ribbon of Microsoft Paint, the Resize icon is selected.](images/image2.png "View ribbon of Microsoft Paint")
 
-9.  In the **Resize and Skew** window, clear the **Maintain aspect ratio** checkbox, select the **Pixels** option, set the following image properties and select **OK**:
+8. In the **Resize and Skew** window, clear the **Maintain aspect ratio** checkbox, select the **Pixels** option, set the following image properties and select **OK**:
 
-    -  Horizontal: **533**
+    - Horizontal: **533**
 
-    -  Vertical: **324**
+    - Vertical: **324**
 
     ![In the Resize and Skew window, the image size is set to the required values.](images/image3.png "Resize")
 
-10. Save the resulting image as C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\Icons\Screenshot.png.  When prompted whether to continue, select **OK** and close Microsoft Paint. 
+9.  Save the resulting image as ***C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\Icons\\Screenshot.png**.  When prompted whether to continue, select **OK** and close Microsoft Paint. 
 
     > **Note**: You are using sample images for the sake of simplicity. When creating and publishing custom Azure Stack Hub Marketplace solutions, you would create your own icons and screenshots that represent the characteristics of these solutions. Keep in mind that you must ensure that their sizes match those specified in the documentation available at https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md.
 
-11. Delete the file **C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\DeploymentTemplates\azuredeploy-101-simple-windows-vm.json**.
+10. Delete the file **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\DeploymentTemplates\\azuredeploy-101-simple-windows-vm.json**.
 
-12. Start Windows PowerShell ISE as administrator.
+11. Start Windows PowerShell ISE as administrator.
 
-13. From the Administrator: Windows PowerShell ISE window, download into the C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\DeploymentTemplates\ folder a sample template that provisions an Azure Stack Hub web app:
+12. From the Administrator: Windows PowerShell ISE window, download into the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\DeploymentTempates** folder a sample template that provisions an Azure Stack Hub web app using the following cmdlet. 
 
      ```
      Invoke-WebRequest `
-  		-Uri https://raw.githubusercontent.com/polichtm/MCW-Azure-Stack/master/Hands-on%20lab/resources.operations/ContosoWebAppTempate.json `
-		-OutFile 'C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\DeploymentTemplates\ContosoWebAppTempate.json'
+  		-Uri https://raw.githubusercontent.com/microsoft/MCW-Azure-Stack/master/Hands-on%20lab/resources.operations/ContosoWebAppTempate.json `
+		-OutFile 'C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\DeploymentTemplates\ContosoWebAppTemplate.json'
      ```
 
-14. In File Explorer, navigate to the C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\strings folder.
+14. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\strings** folder.
 
-15. Open the file **resources.json** in Notepad, modify its content so it matches the following, save, and close the file:
+15. Open the file **resources.resjson** in Notepad, modify its content so it matches the following, save, and close the file:
 
     ```
     {
@@ -178,7 +176,7 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
     }
     ```
 
-16. In File Explorer, navigate to the C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate folder.
+16. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate** folder.
 
 17. Open the file **manifest.json** in Notepad, modify its content so it matches the following, save, and close the file:
 
@@ -221,7 +219,7 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
     }
     ```
 
-18. Open the file **UIDefinition** in Notepad, review its content, and close the file without making any modifications:
+18. Open the file **UIDefinition.json** in Notepad, review its content, and close the file without making any modifications:
 
     ```
     {
@@ -239,66 +237,64 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
 
 ### Task 2: Publish a custom Azure Marketplace solution
 
-1.  From the Administrator: Windows PowerShell ISE window, generate a Marketplace item package file (Contoso.ContosoWebAppTemplate.1.0.0.azpkg) by running the following:
+1. From the Administrator: Windows PowerShell ISE window, generate a Marketplace item package file (Contoso.ContosoWebAppTemplate.1.0.0.azpkg) by running the following:
 
      ```
      & 'C:\Downloads\Azure Stack Marketplace Item Generator and Sample\AzureGalleryPackageGenerator\AzureGalleryPackager.exe' package -m "C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\manifest.json" -o "C:\Downloads"
      ```
-2.  Start Internet Explorer and navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/.
+2. Navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/ using the desktop icon. 
 
-3.  When prompted, sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
+3. When prompted, sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
 
-4.  In the Azure Stack Hub administrator portal, in the hub menu, select **+ Create a resource**.
+4. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left.
 
-5.  On the New blade, select **Data + Storage** and then select **Storage account - blob, file, table, queue**.
+5. On the New blade, select **Data + Storage** and then select **Storage account - blob, file, table, queue**.
 
     ![In the Azure Stack Hub administrator portal, Storage account - blob, file, table, queue is displayed.](images/image4.png "Storage account")
 
-6.  On the Create storage account blade, specify the following settings:
+6. On the Create storage account blade, specify the following settings then Select **Review + create** then **Create**. Wait until the storage account is provisioned.
 
-    -  Subscription: **Consumption Subscription**
+    - Subscription: **Consumption Subscription**
 
-    -  Resource group: The name of a new resource **marketplace-pkgs-RG**.
+    - Resource group: **(Create new) marketplace-pkgs-RG**.
 
-    -  Storage account name: **A unique name consisting of between 3 and 24 lower case letters or digits**.
+    - Storage account name: **A unique name consisting of between 3 and 24 lower case letters or digits**.
 
-    -  Location: **local**
+    - Location: **local**
 
-    -  Performance: **Standard**
+    - Performance: **Standard**
 
-    -  Account kind: **Storage (general purpose v1)**
+    - Account kind: **Storage (general purpose v1)**
 
-    -  Replication: **Locally-redundant storage (LRS)**
+    - Replication: **Locally-redundant storage (LRS)**
 
-7.  Select **Review + create** and then **Create**. Wait until the storage account is provisioned.
+7. On the portal's left navigation, select **Resource groups**.
 
-8.  In the hub menu, select **Resource groups**.
+8. On the Resource Groups blade in the list of resource groups, select **marketplace-pkgs-RG**.
 
-9.  On the Resource Groups blade in the list of resource groups, select **marketplace-pkgs-RG**.
+9. On the **marketplace-pkgs-RG** blade, select the entry representing the newly created storage account.
 
-10. On the marketplace-pkgs-RG blade, select the entry representing the newly created storage account.
+10. On the storage account blade, select **Blobs**.
 
-11. On the storage account blade, select **Blobs**.
+11. On the Blob service blade, select **+ Container**.
 
-12. On the Blob service blade, select **+ Container**.
+12. In the dialog that appears, enter **packages** for the name and **Blob (anonymous read access for blobs only)** for the **Access type**.
 
-13. In the Name textbox, type **packages** and in the **Access type** drop down list, select **Blob (anonymous read access for blobs only)**.
+13. In the list of containers, select **packages**.
 
-14. In the list of containers, select **packages**.
+14. On the packages blade, select **Upload**.
 
-15. On the packages blade, select **Upload**.
+15. On the **Upload blob** blade that appears on the right, select the folder icon next to the **Select a file** text box. 
 
-16. On the upload blob blade, select the folder icon next to the **Select a file** text box. 
-
-17. In the Choose File to Upload text box, navigate to the location containing the package that you noted in the previous task, select the **Contoso.ContosoWebApp.1.0.0.azpkg** file and select **Open**.
+16. In the File Explorer window that opens, navigate to the location containing the package that you noted in the previous task, select the **Contoso.ContosoWebApp.1.0.0.azpkg** file and select **Open**.
 
     ![In the Azure Stack Hub administrator portal, the Upload blob pane shows the Contoso.ContosoWebApp.1.0.0.azpkg file to be uploaded.](images/image5.png "Upload blob pane")
 
-18. Back on the Upload blob blade, select **Upload**.
+17. Back on the Upload blob blade, select **Upload**.
 
     > **Note**: Subsequent steps require Azure Stack PowerShell and tools installed. This was performed as part of **Azure Stack Hub Before the Hands-on Lab setup guide**).
 
-19. From the Administrator: Windows PowerShell ISE window, sign in to the Azure Stack Hub as operator by running the following (make sure to replace the placeholder <tenant_name> with the name of your Azure Active Directory tenant).
+18. From the Administrator: Windows PowerShell ISE window, sign in to the Azure Stack Hub as operator by running the following (make sure to replace the placeholder <tenant_name> with the name of your Azure Active Directory tenant).
 
     >**Note**: Azure Stack Hub still uses the *AzureRM* cmdlets and does not yet support the newer *AzureAZ* cmdlets.
 
@@ -314,43 +310,41 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
     $TenantId = (Invoke-RestMethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
     Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
-
     ```
-20. When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
+19. When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
 
-21. From the Administrator: Windows PowerShell ISE window, publish the package to Azure Stack Hub Marketplace by running the following (make sure to replace the placeholder <storageaccountname> with the name of the storage account you created earlier in this task):
+20. From the Administrator: Windows PowerShell ISE window, publish the package to Azure Stack Hub Marketplace by running the following (make sure to replace the placeholder <storageaccountname> with the name of the storage account you created earlier in this task):
 
     ```
     Add-AzsGalleryItem -GalleryItemUri `
       https://<storageaccountname>.blob.local.azurestack.external/packages/Contoso.ContosoWebApp.1.0.0.azpkg -Verbose
     ```
 
-22. Ensure that the command completes successfully.
+21. Ensure that the command completes successfully.
 
-23. Switch back to the Azure Stack Hub administrator portal, in the hub menu, select **+ Create a resource**.
+22. Switch back to the Azure Stack Hub administrator portal and select **+ Create a resource** on the left navigation.
 
     > **Note**: Alternatively, you can use the Azure Stack Hub User portal at <https://portal.local.azurestack.external/>. The newly added Marketplace item should be available in both.
 
-24. On the New blade, select **Custom**.
+23. On the New blade, select the **Custom** category. 
 
-25. On the Custom blade, select **See all** and ensure that **Contoso WebApp** appears in the list of resource types to provision.
+24. On the Custom blade, select **See all** and ensure that **Contoso WebApp** appears in the list of resource types to provision.
 
     > **Note**: It might take a few minutes for a newly added Marketplace item to appear.
 
     ![In the Azure Stack Hub administrator portal, Contoso WebApp custom Marketplace item is displayed.](images/image6.png "Contoso WebApp custom Marketplace item")
 
-26. On the Custom blade, select **Contoso WebApp**.
+25. On the Custom blade, select **Contoso WebApp**.
 
-27. On the Contoso webapp blade, review the interface of the Contoso webapp blade to verify that it reflects the configuration you specified when creating the package.
+26. On the Contoso webapp blade, review the interface of the Contoso webapp blade to verify that it reflects the configuration you specified when creating the package.
 
-28. On the Contoso webapp blade, select **Create**.
+27. On the Contoso webapp blade, select **Create**.
 
-29. Step through the process of configuring the deployment but do not select **Create**.
+28. Step through the process of configuring the deployment but do not select **Create**.
 
-30. Close all open windows.
+29. Close all open windows.
 
     > **Note**: In general, in order to ensure that the new Azure Stack Hub Marketplace item is functional, you also need to satisfy all of the prerequisites for its deployment, such as OS images referenced by a VM template, are in place. 
-
 
 ## Exercise 2: Implement multi-tenancy
 
@@ -360,79 +354,79 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
 
 ### Task 1: Create and configure a new Azure Active Directory tenant
 
-1.  From the AzS-Host1 Azure VM, start a web browser, navigate to the Azure portal at <https://portal.azure.com>, and sign in by using an account with the Global Admin privileges to the Azure AD tenant associated with the Azure Stack Hub environment.
+1. From the AzS-Host1 Azure VM, start a web browser, navigate to the Azure portal at <https://portal.azure.com>, and sign in by using an account with the Global Admin privileges to the Azure AD tenant associated with the Azure Stack Hub environment.
 
-2.  In the Azure portal, select **+ Create a resource**.
+2. In the Azure portal, select **+ Create a resource**.
 
-3.  On the New blade, in the **Search the Marketplace** text box, type **Azure Active Directory** and, in the list of results, select **Azure Active Directory**.
+3. On the New blade, in the **Search the Marketplace** text box, type **Azure Active Directory** and, in the list of results, select **Azure Active Directory**.
 
-4.  On the Azure Active Directory blade, select **Create**. 
+4. On the Azure Active Directory blade, select **Create**. 
 
-5.  On the Create directory blade, specify the following settings and select **Create**:
+5. On the Create directory blade, specify the following settings and select **Create**:
 
-    -  Organization name: **Fabrikam**
+    - Organization name: **Fabrikam**
 
-    -  Initial domain name: **Any valid, unique domain portion of the fully qualified DNS domain name in the onmicrosoft.com namespace**.
+    - Initial domain name: **Any valid, unique domain portion of the fully qualified DNS domain name in the onmicrosoft.com namespace**.
 
-    -  Country or region: **United States**
+    - Country or region: **United States**
 
-6.  Wait until the new directory is created and then use the link **select here to manage your new directory** to navigate to the **Fabrikam** Azure Active Directory blade.
+6. Wait until the new directory is created and then use the link **select here to manage your new directory** to navigate to the **Fabrikam** Azure Active Directory blade.
 
-7.  On the Fabrikam - Overview blade, select **Users**.
+7. On the Fabrikam - Overview blade, select **Users** under **Manage** on the left.
 
-8.  On the Users - All users blade, select **+ New user**.
+8. On the Users - All users blade, select **+ New user**.
 
-9.  On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
+9. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
     > **Note**: Take a note of the user names (including the domain suffix) and their autogenerated passwords. You will need them in the subsequent tasks of this lab.
 
-    -  User name: **fabrikamadmin1**
+    - User name: **fabrikamadmin1**
 
-    -  Name: **Fabrikam Admin1**
+    - Name: **Fabrikam Admin1**
 
-    -  First name: not set
+    - First name: **not set**
 
-    -  Last name: not set
+    - Last name: **not set**
 
-    -  Password: **Auto-generate password**
+    - Password: **Auto-generate password**
 
-    -  Initial password: **Show Password**
+    - Initial password: **Show Password**
 
-    -  Roles: **Global administrator**
+    - Roles: **Global administrator**
 
-    -  Block sign in: **No**
+    - Block sign in: **No**
 
-    -  Usage location: **United States**
+    - Usage location: **United States**
 
-    -  Job title : not set
+    - Job title : **not set**
 
-    -  Department : not set
+    - Department : **not set**
 
 10. Back on the Users - All users blade, select **+ New user**.
 
 11. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
-    -  User name: **fabrikamuser1**
+    - User name: **fabrikamuser1**
 
-    -  Name: **Fabrikam User1**
+    - Name: **Fabrikam User1**
 
-    -  First name: not set
+    - First name: **not set**
 
-    -  Last name: not set
+    - Last name: **not set**
 
-    -  Password: **Auto-generate password**
+    - Password: **Auto-generate password**
 
-    -  Initial password: **Show Password**
+    - Initial password: **Show Password**
 
-    -  Roles: **User**
+    - Roles: **User**
 
-    -  Block sign in: **No**
+    - Block sign in: **No**
 
-    -  Usage location: **United States**
+    - Usage location: **United States**
 
-    -  Job title : not set
+    - Job title : **not set**
 
-    -  Department : not set
+    - Department : **not set**
 
 12. Select the **Directory + Subscription** icon (to the right of the Cloud Shell icon). 
 
@@ -442,11 +436,11 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
 
 ### Task 2: Configure the existing Azure Stack Hub Azure Active Directory tenant
 
-1.  Start Windows PowerShell ISE as administrator.
+1. Start Windows PowerShell ISE as administrator.
 
     > **Note**: Subsequent steps require Azure Stack PowerShell and tools installed. This was performed as part of **Azure Stack Hub - Operations - Before the hands-on lab setup guide**.
 
-2.  From the Administrator: Windows PowerShell ISE window, set the current directory to the location of the Azure Stack Hub Tools and import required PowerShell modules by running the following:
+2. From the Administrator: Windows PowerShell ISE window, set the current directory to the location of the Azure Stack Hub Tools and import required PowerShell modules by running the following:
 
     ```powershell
     Set-Location -Path '\AzureStack-Tools-master'
@@ -454,7 +448,7 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
 
-3.  From the Administrator: Windows PowerShell ISE window, sign in to the Azure Stack Hub as operator by running the following (make sure to replace the placeholder <tenant_name> with the name of your Azure Active Directory tenant):
+3. From the Administrator: Windows PowerShell ISE window, sign in to the Azure Stack Hub as operator by running the following (make sure to replace the placeholder <tenant_name> with the name of your Azure Active Directory tenant):
 
     ```powershell
     Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
@@ -467,9 +461,9 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
 
     Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
     ```
-4.  When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
+4. When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
 
-5.  From the Administrator: Windows PowerShell ISE window, specify that you will accept identities from the newly created Azure Active Directory tenant by running the following (replace the placeholder `<contoso>` with the DNS name of the existing Azure AD tenant and the placeholder `<fabrikam>` with the DNS name of the newly created Azure AD tenant):
+5. From the Administrator: Windows PowerShell ISE window, specify that you will accept identities from the newly created Azure Active Directory tenant by running the following (replace the placeholder `<contoso>` with the DNS name of the existing Azure AD tenant and the placeholder `<fabrikam>` with the DNS name of the newly created Azure AD tenant):
 
      ```
      $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
@@ -488,15 +482,15 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
       -SubscriptionName $SubscriptionName
      ```
 
-6.  When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
+6. When prompted, sign in with your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
 
-7.  Verify that the operation was successful and close the Administrator: Windows PowerShell ISE window.
+7. Verify that the operation was successful and close the Administrator: Windows PowerShell ISE window.
 
 ### Task 3: Configure the newly created Azure Active Directory tenant
 
-1.  Start Windows PowerShell ISE as administrator.
+1. Start Windows PowerShell ISE as administrator.
 
-2.  From the Administrator: Windows PowerShell ISE window, set the current directory to the location of the Azure Stack Hub Tools and import required PowerShell modules by running the following:
+2. From the Administrator: Windows PowerShell ISE window, set the current directory to the location of the Azure Stack Hub Tools and import required PowerShell modules by running the following:
 
     ```powershell
     Set-Location -Path '\AzureStack-Tools-master'
@@ -504,7 +498,7 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
 
-3.  From the Administrator: Windows PowerShell ISE window, register Azure Stack Hub with the newly created Azure Active Directory tenant by running the following (replace the placeholder `<fabrikam>` with the DNS name of the newly created Azure AD tenant):
+3. From the Administrator: Windows PowerShell ISE window, register Azure Stack Hub with the newly created Azure Active Directory tenant by running the following (replace the placeholder `<fabrikam>` with the DNS name of the newly created Azure AD tenant):
 
      ```
      $tenantARMEndpoint = "https://management.local.azurestack.external"
@@ -516,16 +510,15 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
       -Verbose
      ```
 
-4.  When prompted, sign in by using the **FabrikamAdmin1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+4. When prompted, sign in by using the **FabrikamAdmin1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
 
-5.  Verify that the operation was successful and close the Administrator: Windows PowerShell ISE window.
+5. Verify that the operation was successful and close the Administrator: Windows PowerShell ISE window.
 
-6.  To verify that the multi-tenancy has been configured properly, start Internet Explorer with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **FabrikamUser1** account you created in the first task of this exercise.
+6. To verify that the multi-tenancy has been configured properly, start Internet Explorer with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **FabrikamUser1** account you created in the first task of this exercise.In the Update your password window, change the password and make a note of it for this lab.
 
     > **Note**: Multi-tenancy provides the ability for users in the guest Azure Active Directory tenant to access the Azure Stack Hub user portal (and their respective subscriptions), but not the Azure Stack Hub administrator portal.
 
-7.  Close all open windows.
-
+7. Close all open windows.
 
 ## Exercise 3: Implement delegated management of plans, offers, and subscriptions
 
@@ -537,71 +530,73 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 ### Task 1: Create delegated operator and user Azure Active Directory accounts (as the Azure Stack Hub operator)
 
-1.  From the AzS-Host1 Azure VM, start a web browser, navigate to the Azure portal at <https://portal.azure.com>, and sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
+1. From the AzS-Host1 Azure VM, start a web browser, navigate to the Azure portal at <https://portal.azure.com>, and sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
 
-2.  In the Azure portal, select **Azure Active Directory**.
+2. In the Azure portal, select **Azure Active Directory** under the left navigation on the left.
 
-3.  On the Azure Active Directory blade of the tenant associated with the Azure Stack Hub environment, select **Users**.
+    ![In the Azure portal, the left navigation is displayed.](images/AzureADSelect.png "Azure portal left navigation")
 
-4.  On the Users - All users blade, select **+ New user**
+3. On the Azure Active Directory blade of the tenant associated with the Azure Stack Hub environment, select **Users** under **Manage** on the left. 
 
-5.  On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
+4. On the Users - All users blade, select **+ New user**
+
+5. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
     > **Note**: Take note of the user names (including the domain suffix) and their autogenerated passwords. You will need them in the subsequent tasks of this lab.
 
-    -  User name: **contosoazsdp1**
+    - User name: **contosoazsdp1**
 
-    -  Name: **Contoso AzSDP1**
+    - Name: **Contoso AzSDP1**
 
-    -  First name: not set
+    - First name: **not set**
 
-    -  Last name: not set
+    - Last name: **not set**
 
-    -  Password: **Auto-generate password**
+    - Password: **Auto-generate password**
 
-    -  Initial password: **Show Password**
+    - Initial password: **Show Password**
 
-    -  Roles: **User**
+    - Roles: **User**
 
-    -  Block sign in: **No**
+    - Block sign in: **No**
 
-    -  Usage location: **United States**
+    - Usage location: **United States**
 
-    -  Job title : not set
+    - Job title : **not set**
 
-    -  Department : not set
+    - Department : **not set**
 
-6.  Back on the Users - All users blade, select **+ New user**.
+6. Back on the Users - All users blade, select **+ New user**.
 
-7.  On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
+7. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
-    -  User name: **contosouser1**
+    - User name: **contosouser1**
 
-    -  Name: **Contoso User1**
+    - Name: **Contoso User1**
 
-    -  First name: not set
+    - First name: **not set**
 
-    -  Last name: not set
+    - Last name: **not set**
 
-    -  Password: **Auto-generate password**
+    - Password: **Auto-generate password**
 
-    -  Initial password: **Show Password**
+    - Initial password: **Show Password**
 
-    -  Roles: **User**
+    - Roles: **User**
 
-    -  Block sign in: **No**
+    - Block sign in: **No**
 
-    -  Usage location: **United States**
+    - Usage location: **United States**
 
-    -  Job title : not set
+    - Job title : **not set**
 
-    -  Department : not set
+    - Department : **not set**
 
-8.  Leave the browser window open.
+8. Leave the browser window open.
 
-9.  Start a web browser using in private/incognito mode, navigate to the Azure portal at <https://portal.azure.com>, and sign in with the **FabrikamAdmin1** Azure Active Directory credentials you created in the previous exercise. 
+9. Start a web browser using in private/incognito mode, navigate to the Azure portal at <https://portal.azure.com>, and sign in with the **FabrikamAdmin1** Azure Active Directory credentials you created in the previous exercise. 
 
-10. In the Azure portal, select **Azure Active Directory**.
+10. In the Azure portal, select **Azure Active Directory** in the left navigation.
 
 11. On the Azure Active Directory blade of the Fabrikam Azure Active Directory tenant select **Users**.
 
@@ -609,65 +604,65 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 13. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
-    -  User name: **fabrikamazsdp1**
+    - User name: **fabrikamazsdp1**
 
-    -  Name: **Fabrikam AzSDP1**
+    - Name: **Fabrikam AzSDP1**
 
-    -  First name: not set
+    - First name: **not set**
 
-    -  Last name: not set
+    - Last name: **not set**
 
-    -  Password: **Auto-generate password**
+    - Password: **Auto-generate password**
 
-    -  Initial password: **Show Password**
+    - Initial password: **Show Password**
 
-    -  Roles: **User**
+    - Roles: **User**
 
-    -  Block sign in: **No**
+    - Block sign in: **No**
 
-    -  Usage location: **United States**
+    - Usage location: **United States**
 
-    -  Job title : not set
+    - Job title : **not set**
 
-    -  Department : not set
+    - Department : **not set**
 
 14. Leave the browser in private/incognito mode window open.
 
 ### Task 2: Create a plan consisting of the Subscription service (as the Azure Stack Hub operator)
 
-1.  Start Internet Explorer and navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/.
+1. Start Internet Explorer and navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/.
 
-2.  When prompted, sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
+2. When prompted, sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
 
-3.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+3. In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
 
-4.  On the New blade, select **Offers + Plans** and then select **Plan**.
+4. On the New blade, select **Offers + Plans** and then select **Plan**.
 
-5.  On the Basics tab of the New plan blade, specify the following settings:
+5. On the Basics tab of the New plan blade, specify the following settings:
 
-    -  Display name: **DP-subscription-plan1**
+    - Display name: **DP-subscription-plan1**
 
-    -  Resource name: **dp-subscription-plan1**
+    - Resource name: **dp-subscription-plan1**
 
-    -  Description: **Delegated provider plan containing Microsoft.Subscriptions**
+    - Description: **Delegated provider plan containing Microsoft.Subscriptions**
 
-    -  Resource group: name of a new resource group **dp-RG**
+    - Resource group: name of a new resource group **dp-RG**
 
     ![In the Azure Stack Hub administrator portal, the Basics tab of the New plan blade is displayed.](images/image7.png "Basics tab of the New plan blade")
 
-6.  Select the **Services** tab.
+6. Select the **Services** tab.
 
-7.  On the Services tab of the New plan blade, select the **Microsoft.Subscriptions** checkbox.
+7. On the Services tab of the New plan blade, select the **Microsoft.Subscriptions** checkbox.
 
     ![In the Azure Stack Hub administrator portal, the Services tab of the New plan blade is displayed.](images/image8.png "Services tab of the New plan blade")
 
-8.  Select **Quotas**.
+8. Select **Quotas**.
 
-9.  On the Quotas tab of the New plan blade, in the **Microsoft.Subscriptions** drop down list, select **delegatedProviderQuota**.
+9. On the Quotas tab of the New plan blade, in the **Microsoft.Subscriptions** drop down list, select **delegatedProviderQuota**.
 
     ![In the Azure Stack Hub administrator portal, the Quotas tab of the New plan blade is displayed.](images/image9.png "Quotas tab of the New plan blade")
 
-10. Select **Review + create** and then select **Create**. 
+    Select **Review + create** and then select **Create**. 
 
 ### Task 3: Create an offer based on the plan consisting of the Subscriptions service (as the Azure Stack Hub operator)
 
