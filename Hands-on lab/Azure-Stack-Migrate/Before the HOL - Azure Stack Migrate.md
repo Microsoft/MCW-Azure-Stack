@@ -25,112 +25,60 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->
 
-- [Azure Stack Migrate before the hands-on lab setup guide](#azure-stack-migrate-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Provision an Azure VM to host the Azure Stack Hub Development Kit](#task-1-provision-an-azure-vm-to-host-the-azure-stack-hub-development-kit)
-    - [Task 2: Install Azure Stack Hub Development Kit](#task-2-install-azure-stack-hub-development-kit)
-    - [Task 3: Download and run the Azure Stack Hub Configurator Script](#task-3-download-and-run-the-azure-stack-hub-configurator-script)
-    - [Task 4: Perform post installation tasks](#task-4-perform-post-installation-tasks)
-
-<!-- /TOC -->
-
-# Azure Stack Migrate before the hands-on lab setup guide 
+# Azure Stack Operate before the hands-on lab setup guide 
 
 ## Requirements
 
--   A Microsoft Azure subscription.
+-   Administrative access to an Azure Stack Hub Development Kit deployment in an Azure VM.
+-   An Azure subscription.
+-   An Azure Active Directory account with the Owner role in the Azure Subscription and the Global Administrator role in the corresponding Azure Active Directory tenant.
 
 ## Before the hands-on lab
 
-Duration: 10-12 hours
+Duration: 7 hours
 
-To execute this lab, you will have two options: you can use your own Azure Stack Hub Development Kit that is already installed, or you will need to follow the instructions below to setup your own in Microsoft Azure using nested virtual machines.
+### Task 1: Provision an Azure VM to Host the Azure Stack Hub Development Kit
 
-For help with installation of the Azure Stack Hub Development Kit, review the following article: <https://azure.microsoft.com/en-us/overview/azure-stack/development-kit>.
+In this task, you will provision an Azure VM that will host the Azure Stack Development Kit deployment.
 
-### Task 1: Provision an Azure VM to host the Azure Stack Hub Development Kit
+Execute the following PowerShell code. When prompted for Azure credentials, you will need to authenticate with an Azure Account that has Global Administrator access on the Azure AD Tenant as well as Owner rights on the Azure subscription. 
 
-In this task, you will provision an Azure VM that will host the Azure Stack Development Kit deployment
+There will be a second prompt for the local administrator account. Specify demo@pass123 when prompted. 
 
-1. Navigate to the following URL to launch the AzureStackOnAzureVM deployment template in the Azure Portal.
+> Note: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
 
-    ```
-    http://aka.ms/AzureStackonAzureVM
-    ```
+```PowerShell 
+Connect-AzAccount
 
-2. When prompted, authenticate by using your Azure AD account or Microsoft Account with the Owner role in the Azure subscription that you intend to use in this lab.
+$region = 'East US 2'
+$rg = '<Resource Group Name>'
+$saName = "asdk" + (Get-Random)
+New-AzResourceGroup -Name $rg -Location $region
+$sa = New-AzStorageAccount -Location $region -ResourceGroupName $rg -SkuName Standard_LRS -Name $saName
 
-3. Specify the following options on the template settings:
+$sourceUri = "https://azshdkeus2.blob.core.windows.net/vhd/cloudbuilder.vhd"
+New-AzStorageContainer -Name vhd -Context $sa.context
+Start-AzStorageBlobCopy -AbsoluteUri $sourceUri -DestContainer "vhd" -DestContext $sa.context -DestBlob "cloudbuilder.vhd" -ConcurrentTaskCount 100
+do {
+    Start-Sleep -Seconds 60
+    $result = Get-AzStorageAccount -Name $sa.StorageAccountName -ResourceGroupName $rg | Get-AzStorageBlob -Container "vhd" | Get-AzStorageBlobCopyState
+    $remaining = [Math]::Round(($result.TotalBytes - $result.BytesCopied) / 1gb,2)
+    Write-Verbose -Message "Waiting copy to finish remaining $remaining GB" -Verbose 
+} until ($result.Status -eq "success") 
 
-    - Subscription: The name of the target Azure subscription where you want to deploy the Azure VM serving as the ASDK host.
+$templateParameterObject = @{
+    dataDiskCount = 6
+    osDiskVhdUri = $sa.PrimaryEndpoints.Blob + "vhd/cloudbuilder.vhd"
+}
+New-AzResourceGroupDeployment -ResourceGroupName $rg -Name AzureStackonAzureVM -TemplateUri "https://raw.githubusercontent.com/opsgility/cw-azure-stack/master/azure-deploy.json" -TemplateParameterObject $templateParameterObject
 
-    - Resource group: A new resource group named **azurestack-RG**.
-
-    - Location: The name of the Azure region where you want to deploy the Azure VM serving as the ASDK host.
-
-    - Virtual Machine Name: **AzS-HOST1**
-
-    - Virtual Machine Size: **Standard_E20s-v3**
-
-    - Data Disk Size in GB: **256**
-
-    - Data Disk Count: **4**
-
-    - Virtual Network Name: **AzureStack-VNET**
-
-    - Admin Password: **demo@pass123**
-
-    - Address Prefix: **10.0.0.0/24**
-
-    - Subnet Name: **default**
-
-    - Subnet Prefix: **10.0.0.0/24**
-
-    - Public Ip Address Type: **Dynamic**
-
-    - Public Dns Name: Any valid, globally unique name.
-
-    - Auto Shutdown Status: **Disabled**
-
-    - Auto Shutdown Time: The default value.
-
-    - Auto Shutdown Notification Status: **Disabled**
-
-    - Auto Download ASDK: **false**
-
-    - Auto Install ASDK: **false**
-
-    - Azure AD Tenant: The DNS name of your Azure AD tenant.
-
-    - Azure AD Global Admin: The name of an Azure AD user with the Global Admin role.
-
-    - Azure AD Global Admin Password: The password of the Azure AD user with the Global Admin role.
-
-    - ASDK Configurator Object: The default value.
-
-    - Enable RDSH: **false**
-
-    - Branch: **master**
-
-    - Site Location: **[resourceGroup().location]**
-
-    Enable the checkbox **I agree to the terms and conditions stated above** and select **Purchase** when you are ready to deploy the VM.
-
-    > **Note:** This deployment may take about 15 minutes to complete.
-
-4.  Wait until the deployment completes and login to the **AzS-HOST1** virtual machine via Remote Desktop using the following credentials:
-
-    - Username: **Administrator**
-
-    - Password: **demo@pass123**
+```
 
 
-### Task 2: Install Azure Stack Hub Development Kit
+### Task 2: Install Azure Stack Hub Development Kit (Operations)
 
-In this task you will execute a script that will download and provision Azure Stack Hub Development Kit on the newly deployed Azure VM
+In this task you will execute a script that will download and provision Azure Stack Hub Development Kit on the newly deployed Azure VM.
 
 1. Within the Remote Desktop session to **AzSHOST-1**, right-click Start and then select Command Prompt (Admin).
 
@@ -163,7 +111,44 @@ In this task you will execute a script that will download and provision Azure St
     > **Note:** The installation might take between 6-8 hours. Monitor the PowerShell session where the script is running to determine when it completes.
 
 
-### Task 3: Download and run the Azure Stack Hub Configurator Script
+### Task 3: Prepare the Azure Stack Hub Operator Station
+
+1.  In the Azure portal, navigate to the blade of **AzS-HOST1** virtual machine.
+
+2.  From the **AzS-HOST1** blade, connect via RDP to **AzS-HOST1** Windows host. When prompted, authenticate by using the following credentials:
+
+    -   Username: **AzureStack\AzureStackAdmin**
+
+    -   Password: **demo@pass123**
+
+3.  Select **Start** and, in the Start menu, select **Control Panel**.
+
+4.  In the Control Panel window, select **View by**, in the drop-down menu, select **Small icons**, and select **User Accounts**.
+
+5.  Select **Change User Account Control settings**. 
+
+6.  When prompted, in the **User Account Control** dialog box, select **Yes**. 
+
+7.  In the **User Account Control Settings**, move the slider down to the **Never notify** position, select **OK**, and, when prompted again, in the **User Account Control** dialog box, select **Yes**. 
+
+8.  Start Internet Explorer and install another web browser (Chrome or Firefox). 
+
+9.  From Internet Explorer, browse to https://code.visualstudio.com/, and from the Visual Studio Code page, install the latest stable version of Visual Studio Code. 
+
+    > **Note:** Except VSCode, most of the next steps should be already configured on your VM - please check that the tools are there and you are able to configure them. VSCode is optional - you can perform all of the activities in the labs using just PowerShell, but you may want to explore the VSCode user interface, because it enhances interacting with Azure Stack Hub using PowerShell and ARM templates.
+
+10. Right-click **Start** and, in the right-hand menu, select **Command Prompt (Admin)**.
+
+11. From the **Administrator: Command Prompt**, install appropriate VSCode extensions by running the following:
+
+    ```
+    code --install-extension msazurermtools.azurerm-vscode-tools
+    code --install-extension ms-vscode.powershell
+    code --install-extension ms-azuretools.vscode-azurestorage
+    ```
+
+
+### Task 4: Download and run the Azure Stack Hub Configurator Script
 
 In this task you will execute a script that will configure install and configure Azure Stack Hub with PowerShell modules and tools as well as SQL, App Service, and MySQL Resource Providers.
 
@@ -208,87 +193,12 @@ In this task you will execute a script that will configure install and configure
     .\AzSPoC.ps1 -azureDirectoryTenantName '[tenant].onmicrosoft.com' -authenticationType AzureAD `
         -downloadPath "D:\ASDKfiles" -ISOPath "D:\WS2016EVALISO.iso" -ISOPath2019 "D:\WS2019EVALISO.iso" -asdkHostPwd 'demo@pass123' `
         -VMpwd 'demo@pass123' -azureAdUsername '[azure-admin-upn]' -azureAdPwd '[azure-admin-password]' `
-        -registerAzS -useAzureCredsForRegistration -azureRegSubId '[subscription-id]' -branch "AzureStack-VM-PoC"
+        -registerAzS -useAzureCredsForRegistration -azureRegSubId '[subscription-id]' -branch "master"
     ```
 
-    > **Note**: This step will take an additional 3 to 4 hours.
+    > **Note**: This step will take an additional 4 to 5 hours.
 
     > **Note**: If any of the jobs fail, wait for the entire script to complete and run the script again. 
-
-
-### Task 4: Perform post installation tasks
-
-1. Within the Remote Desktop session to **AzSHOST-1**, start Internet Explorer and browse to <https://portal.azure.com>.
-
-2. When prompted, authenticate by using your Azure AD account or Microsoft Account with the Owner role in the Azure subscription that you are using in this lab.
-
-3. In the Azure portal, start a PowerShell session within the Cloud Shell.
-
-    > **Note:** If prompted, consent to configuring storage for Cloud Shell. 
-
-4. From the Cloud Shell pane, run the following to identify the Azure AD DNS domain name:
-
-    ```powershell
-    $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
-    ```
-
-5. From the Cloud Shell pane, run the following to create a new user account in the Azure AD tenant associated with your Azure subscription:
-
-    ```powershell
-    $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
-    $passwordProfile.Password = 'demo@pass123'
-    $passwordProfile.ForceChangePasswordNextLogin = $false
-
-    New-AzureADUser -AccountEnabled $true -DisplayName 'AzSHOperator' -PasswordProfile $passwordProfile -MailNickName 'AzSHOperator' -UserPrincipalName "AzSHOperator@$domainName"
-    ```
-
-6. Switch to the Azure Stack Hub Administrator portal at <https://adminportal.local.azurestack.external>.
-
-7. When prompted, sign in with Azure AD user account you provided when installing Azure Stack Hub Development Kit.
-
-8. In the Azure Stack Hub Administrator portal, navigate to the **All services** blade and then, in the **GENERAL** section, select **Subscriptions**.
-
-9. On the **Subscriptions** blade, select **Default Provider Subscription**.
-
-    ![Three subscriptions, including Default Provider Subscription, listed on the Subscriptions blade. ](images/Hands-onlabstep-by-step-AzureStackimages/media/image1.png "Subscriptions")
-
-10. On the **Default Provider Subscription**, select **Access control (IAM)**.
-
-11. Select **+ Add**, on the **Add permission** blade, assign the **Owner** role to the Azure AD user account you created earlier in this task and **Save**.
-
-12. Return to the **Subscription** blade and repeat the previous two steps for the **Consumption Subscription** and **Metering Subscription**.
-
-    > **Note:** Use the **AzSHOperator** user account when running the lab.
-
-13. In the Azure Stack administrator portal, in the hub menu, select **All services**.
-
-14. On the **All Services** blade, select **App Service**.
-
-15. On the **App Service** blade, select **Roles**.
-
-    ![App Service - Roles blade is displayed.](images/Hands-onlabstep-by-step-AzureStackimages/media/image8.png "App Service - Roles")
-
-16. In the list of roles, in the **Web Worker** **Small** tier entry, right-click the ellipsis icon and, in the right-click menu, select **ScaleSet**.
-
-17. On the **SmallWorkerTierScaleSet** blade, select **Scaling**.
-
-18. On the **SmallWorkerTierScaleSet - Scaling** blade, set **Instance count** to 1 and select **Save**.
-
-    ![SmallWorkerTierScaleSet - Scaling blade is displayed with Instance count set to 1.](images/Hands-onlabstep-by-step-AzureStackimages/media/image10.png "App Service - Roles")
-
-    > **Note:** App Service on Azure Stack Hub will now add the additional VM, configure it, install all the required software, and mark it as ready when this process is complete. This process should take approximately 30 minutes. To verify it, review the **SmallWorkerTierScaleSet - Instances** blade.
-
-    ![SmallWorkerTierScaleSet - Instances blade is displayed with the SmallWorkerTierScaleSet instance running.](images/Hands-onlabstep-by-step-AzureStackimages/media/image11.png "App Service - Roles")
-
-    > **Note:** Many of the instructions ask you to copy/paste values from the Azure Stack Hub portal. The copy buttons do not work in IE. It is recommended to install Firefox or Chrome inside the Azure Stack Hub host. 
-
-    ```
-    https://www.mozilla.org/en-US/firefox/new/
-    ```
-
-    ```
-    https://www.google.com/chrome
-    ```
 
 You should complete these instructions *before* attending the workshop. 
 

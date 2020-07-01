@@ -25,17 +25,6 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-<!-- TOC -->
-
-- [Azure Stack Operate before the hands-on lab setup guide](#azure-stack-operate-before-the-hands-on-lab-setup-guide)
-  - [Requirements](#requirements)
-  - [Before the hands-on lab](#before-the-hands-on-lab)
-    - [Task 1: Provision an Azure VM to Host the Azure Stack Hub Development Kit](#task-1-provision-an-azure-vm-to-host-the-azure-stack-hub-development-kit)
-    - [Task 2: Install Azure Stack Hub Development Kit (Operations)](#task-2-install-azure-stack-hub-development-kit-operations)
-    - [Task 3: Prepare the Azure Stack Hub Operator Station](#task-3-prepare-the-azure-stack-hub-operator-station)
-  - [Task 4: Register the Azure Stack Hub Development Kit with Azure](#task-4-register-the-azure-stack-hub-development-kit-with-azure)
-
-<!-- /TOC -->
 
 # Azure Stack Operate before the hands-on lab setup guide 
 
@@ -53,75 +42,38 @@ Duration: 7 hours
 
 In this task, you will provision an Azure VM that will host the Azure Stack Development Kit deployment.
 
-1. Navigate to the following URL to launch the AzureStackOnAzureVM deployment template in the Azure Portal:
+Execute the following PowerShell code. When prompted for Azure credentials, you will need to authenticate with an Azure Account that has Global Administrator access on the Azure AD Tenant as well as Owner rights on the Azure subscription. 
 
-    ```
-    http://aka.ms/AzureStackonAzureVM
-    ```
+There will be a second prompt for the local administrator account. Specify demo@pass123 when prompted. 
 
-2. Specify the following options on the template settings:
+> Note: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
 
-    - Subscription: The name of the target Azure subscription where you want to deploy the Azure VM serving as the ASDK host.
+```PowerShell 
+Connect-AzAccount
 
-    - Resource group: A new resource group named **azurestack-RG**.
+$region = 'East US 2'
+$rg = '<Resource Group Name>'
+$saName = "asdk" + (Get-Random)
+New-AzResourceGroup -Name $rg -Location $region
+$sa = New-AzStorageAccount -Location $region -ResourceGroupName $rg -SkuName Standard_LRS -Name $saName
 
-    - Location: The name of the Azure region where you want to deploy the Azure VM serving as the ASDK host.
+$sourceUri = "https://azshdkeus2.blob.core.windows.net/vhd/cloudbuilder.vhd"
+New-AzStorageContainer -Name vhd -Context $sa.context
+Start-AzStorageBlobCopy -AbsoluteUri $sourceUri -DestContainer "vhd" -DestContext $sa.context -DestBlob "cloudbuilder.vhd" -ConcurrentTaskCount 100
+do {
+    Start-Sleep -Seconds 60
+    $result = Get-AzStorageAccount -Name $sa.StorageAccountName -ResourceGroupName $rg | Get-AzStorageBlob -Container "vhd" | Get-AzStorageBlobCopyState
+    $remaining = [Math]::Round(($result.TotalBytes - $result.BytesCopied) / 1gb,2)
+    Write-Verbose -Message "Waiting copy to finish remaining $remaining GB" -Verbose 
+} until ($result.Status -eq "success") 
 
-    - Virtual Machine Name: **AzS-HOST1**
+$templateParameterObject = @{
+    dataDiskCount = 6
+    osDiskVhdUri = $sa.PrimaryEndpoints.Blob + "vhd/cloudbuilder.vhd"
+}
+New-AzResourceGroupDeployment -ResourceGroupName $rg -Name AzureStackonAzureVM -TemplateUri "https://raw.githubusercontent.com/opsgility/cw-azure-stack/master/azure-deploy.json" -TemplateParameterObject $templateParameterObject
 
-    - Virtual Machine Size: **Standard_E20s-v3**
-
-    - Data Disk Size in GB: **256**
-
-    - Data Disk Count: **4**
-
-    - Virtual Network Name: **AzureStack-VNET**
-
-    - Admin Password: **demo@pass123**
-
-    - Address Prefix: **10.0.0.0/24**
-
-    - Subnet Name: **default**
-
-    - Subnet Prefix: **10.0.0.0/24**
-
-    - Public Ip Address Type: **Dynamic**
-
-    - Public Dns Name: Any valid, globally unique name.
-
-    - Auto Shutdown Status: **Disabled**
-
-    - Auto Shutdown Time: The default value.
-
-    - Auto Shutdown Notification Status: **Disabled**
-
-    - Auto Download ASDK: **false**
-
-    - Auto Install ASDK: **false**
-
-    - Azure AD Tenant: The DNS name of your Azure AD tenant.
-
-    - Azure AD Global Admin: The name of an Azure AD user with the Global Admin role.
-
-    - Azure AD Global Admin Password: The password of the Azure AD user with the Global Admin role.
-
-    - ASDK Configurator Object: The default value.
-
-    - Enable RDSH: **false**
-
-    - Branch: **master**
-
-    - Site Location: **[resourceGroup().location]**
-
-    Enable the checkbox **I agree to the terms and conditions stated above** and select **Purchase** when you are ready to deploy the VM.
-
-    > **Note:** This deployment may take about 15 minutes to complete.
-
-3.  Wait until the deployment completes and login to the **AzS-HOST1** virtual machine via Remote Desktop using the following credentials:
-
-    - Username: **Administrator**
-
-    - Password: **demo@pass123**
+```
 
 
 ### Task 2: Install Azure Stack Hub Development Kit (Operations)
@@ -195,143 +147,58 @@ In this task you will execute a script that will download and provision Azure St
     code --install-extension ms-azuretools.vscode-azurestorage
     ```
 
-12. Start Windows PowerShell ISE as administrator.
 
-13. From the Administrator: Windows PowerShell ISE window, ensure that PSGallery is configured as trusted repository by running the following:
+### Task 4: Download and run the Azure Stack Hub Configurator Script
+
+In this task you will execute a script that will configure install and configure Azure Stack Hub with PowerShell modules and tools as well as SQL, App Service, and MySQL Resource Providers.
+
+1. From within the **AzSHost-1** virtual machine launch a Windows PowerShell console as Administrator.
+
+2. From the Administrator: Windows PowerShell window, create a folder named **C:\\AzSPoc** and set it as the current directory by running the following:
 
     ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
-    Register-PSRepository -Default
-    Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+    New-Item -ItemType Directory -Force -Path 'C:\AzSPoC'
+    Set-Location 'C:\AzSPoC'
     ```
 
-14. From the Administrator: Windows PowerShell ISE window, install the AzureRM.BootStrapper module by running the following:
+3. From the Administrator: Windows PowerShell window, download the Azure Stack Hub Configuration script by running:
 
     ```powershell
-    Install-Module -Name AzureRM.BootStrapper
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-Webrequest https://raw.githubusercontent.com/mattmcspirit/azurestack/AzureStack-VM-PoC/deployment/AzSPoC.ps1 -UseBasicParsing -OutFile AzSPoC.ps1
     ```
 
-15. From the Administrator: Windows PowerShell ISE window, install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session by running the following:
+4. From the Administrator: Windows PowerShell window, download the Windows 2019 Evaluation ISO for the Azure Stack Hub VMs by running the following:
 
     ```powershell
-    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    ```
-  
-16. From the Administrator: Windows PowerShell ISE window, install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session by running the following:
-
-    ```powershell
-    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.7.2
+    $ProgressPreference = "SilentlyContinue"
+    wget https://software-download.microsoft.com/download/pr/17763.253.190108-0006.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso -UseBasicParsing -OutFile D:\WS2019EVALISO.iso
     ```
 
-17. From the Administrator: Windows PowerShell ISE window, download the Azure Stack Hub Tools by running the following:
+5. From the Administrator: Windows PowerShell window, download the Windows 2016 Evaluation ISO for the Azure Stack Hub VMs by running the following:
 
     ```powershell
-    Set-Location -Path '\'
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
-    Invoke-WebRequest https://github.com/Azure/AzureStack-Tools/archive/master.zip -OutFile master.zip
-    Expand-Archive master.zip -DestinationPath . -Force
-    Set-Location -Path '\AzureStack-Tools-master'
+    wget http://download.microsoft.com/download/1/4/9/149D5452-9B29-4274-B6B3-5361DBDA30BC/14393.0.161119-1705.RS1_REFRESH_SERVER_EVAL_X64FRE_EN-US.ISO -UseBasicParsing -OutFile D:\WS2016EVALISO.iso
     ```
 
-18. From the Administrator: Windows PowerShell ISE window, register the Azure Stack Hub PowerShell environment that targets your Azure Stack Hub instance by running the following:
+6. From the Administrator: Windows PowerShell window, create a folder named **D:\\ASDKfiles** by running the following:
 
     ```powershell
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external" `
-      -AzureKeyVaultDnsSuffix adminvault.local.azurestack.external `
-      -AzureKeyVaultServiceEndpointResourceId https://adminvault.local.azurestack.external
+    New-Item -ItemType Directory -Force -Path 'D:\ASDKfiles'
     ```
 
-19. From the Administrator: Windows PowerShell ISE window, set your Azure Active Directory tenant by running the following (make sure to replace the placeholder `<tenant_name>` with the name of your Azure Active Directory tenant):
+7. From the Administrator: Windows PowerShell window, execute the script to configure the Azure SDK (ensure you replace the placeholder values, where `[azure-admin-upn]` and `[azure-admin-password]` designate the user name and password of the account with the Owner role in the Azure subscription you are using in this lab and the Global Administrator role in the Azure AD tenant associated with that subscription, `[tenant]` is the name of the Azure AD tenant associated with the Azure subscription you are using in this lab, and `[subscription-id]` is the identifier of that subscription):
 
     ```powershell
-    $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
-    $AADTenantName = "<tenant_name>.onmicrosoft.com"
-    $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
+    .\AzSPoC.ps1 -azureDirectoryTenantName '[tenant].onmicrosoft.com' -authenticationType AzureAD `
+        -downloadPath "D:\ASDKfiles" -ISOPath "D:\WS2016EVALISO.iso" -ISOPath2019 "D:\WS2019EVALISO.iso" -asdkHostPwd 'demo@pass123' `
+        -VMpwd 'demo@pass123' -azureAdUsername '[azure-admin-upn]' -azureAdPwd '[azure-admin-password]' `
+        -registerAzS -useAzureCredsForRegistration -azureRegSubId '[subscription-id]' -branch "master"
     ```
 
-20. From the Administrator: Windows PowerShell ISE window, create the **AzureStackAdmin** environment by running the following:
+    > **Note**: This step will take an additional 4 to 5 hours.
 
-    ```powershell
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantId
-    ```  
-
-21. When prompted, sign in with your Azure Active Directory account.
-
-    > **Note:** Type "Get-AzureRMSubscription" and note list of subscriptions (Default Provider Subscription, Metering Subscription, and Consumption Subscription) and the corresponding tenant ID. You are now connected to your Azure Stack Hub instance and can run commands such as **Get-AzsLocation**, **Get-AzsSubscription**, or **Get-AzsUserSubscription**.
-
-    > Ignore the warning stating, **Preview version of the module Azs.Subscriptions loaded. Future release of this module may have breaking changes**.
-
-
-## Task 4: Register the Azure Stack Hub Development Kit with Azure
-
-1.  From the Administrator: Windows PowerShell ISE window, specify the Azure Active Directory account you will use to register Azure Stack Hub with the Azure Stack Hub resource provider in Azure by running the following:
-
-    ```powershell
-    Add-AzureRmAccount -EnvironmentName AzureCloud
-    ```
-
-2.  When prompted, your Azure Active Directory account that you provided when provisioning the Azure Stack Hub environment.
-
-3.  If you have multiple subscriptions, run the following command to select the one you want to use (make sure to replace the placeholder `<subscription_ID>` with the id of the target subscription):
-
-    ```powershell
-    Set-AzureRmContext - SubscriptionId '<subscription_ID'"
-    ```
-
-4.  From the Administrator: Windows PowerShell ISE window, register the Azure Stack Hub resource provider by running the following:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
-    ```
-
-5.  From the Administrator: Windows PowerShell ISE window, configure the registration by running the following:
-
-    ```powershell
-    Set-Location -Path '\AzureStack-Tools-master'
-    # Import the registration module that was downloaded with the GitHub tools
-    Import-Module -Name '.\Registration\RegisterWithAzure.psm1'
-
-    ```
-
-6.  From the Administrator: Windows PowerShell ISE window, connect to the privileged endpoint of your ASDK installation by running the following:
-
-    ```powershell
-    $adminUserName = 'azurestack\CloudAdmin'
-    $adminPassword = 'demo@pass123' | ConvertTo-SecureString -Force -AsPlainText
-    $adminCredentials = New-Object PSCredential($adminUserName,$adminPassword)
-
-    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint -Credential $adminCredentials
-    ```
-
-7.  From the `[AzS-ERC01]: PS>` prompt within the Administrator: Windows PowerShell ISE window, display the local Azure Stack Hub stamp information by running the following:
-
-    ```powershell
-    Get-AzureStackStampInformation 
-    ```
-
-8.  In the output of the command you ran in the previous step, identify the CloudId parameter, copy it to Clipboard, and exit the PowerShell Remoting session by running the following:
-
-    ```powershell
-    Exit-PSSession
-    ```
-
-9.  From the Administrator: Windows PowerShell ISE window, configure the registration by running the following (make sure to replace the placeholder `<cloud_ID>` with the value of the CloudId parameter you identified in the previous step):
-
-    ```powershell
-    $RegistrationName = "<cloud_ID>"
-    $AzureContext = Get-AzureRmContext
-
-    Set-AzsRegistration `
-	-PrivilegedEndpointCredential $adminCredentials `
-	-PrivilegedEndpoint AzS-ERCS01 `
-	-BillingModel Development `
-	-RegistrationName $RegistrationName `
-	-UsageReportingEnabled:$true
-    ```
-
-10. Review the output of the command you ran in the previous task and verify that the registration was successful.
+    > **Note**: If any of the jobs fail, wait for the entire script to complete and run the script again. 
 
 You should complete these instructions *before* attending the workshop. 
 
