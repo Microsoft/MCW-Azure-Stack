@@ -510,7 +510,7 @@ In this exercise, you will implement Azure Stack Hub multi-tenancy.
       -Verbose
      ```
 
-4. When prompted, sign in by using the **FabrikamAdmin1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+4. When prompted, sign in by using the **FabrikamAdmin1** account you created in the first task of this exercise. In the Update your password window, change the password to something you'll remember.
 
 5. Verify that the operation was successful and close the Administrator: Windows PowerShell ISE window.
 
@@ -630,7 +630,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 ### Task 2: Create a plan consisting of the Subscription service (as the Azure Stack Hub operator)
 
-1. Start Internet Explorer and navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/.
+1. Start a browser and navigate to the Azure Stack Hub administrator portal at https://adminportal.local.azurestack.external/.
 
 2. When prompted, sign in with the Azure Active Directory credentials you provided when provisioning the Azure Stack Hub environment.
 
@@ -646,7 +646,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
     - Description: **Delegated provider plan containing Microsoft.Subscriptions**
 
-    - Resource group: name of a new resource group **dp-RG**
+    - Resource group: **(Create new) dp-RG**
 
     ![In the Azure Stack Hub administrator portal, the Basics tab of the New plan blade is displayed.](images/image7.png "Basics tab of the New plan blade")
 
@@ -656,7 +656,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
     ![In the Azure Stack Hub administrator portal, the Services tab of the New plan blade is displayed.](images/image8.png "Services tab of the New plan blade")
 
-8. Select **Quotas**.
+8. Select the **Quotas** tab.
 
 9. On the Quotas tab of the New plan blade, in the **Microsoft.Subscriptions** drop down list, select **delegatedProviderQuota**.
 
@@ -666,219 +666,209 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 ### Task 3: Create an offer based on the plan consisting of the Subscriptions service (as the Azure Stack Hub operator)
 
-1.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+1. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left. 
 
-2.  On the New blade, select **Offers + Plans** and then select **Offer**.
+2. On the New blade, select **Offers + Plans** and then select **Offer**.
 
-3.  On the Basics tab of the Create a new offer blade, specify the following settings:
+3. On the Basics tab of the Create a new offer blade, specify the following settings:
 
-    -  Display name: **Subscription-for-dp-offer1**
+    - Display name: **Subscription-for-dp-offer1**
 
-    -  Resource name: **subscription-for-dp-offer1**
+    - Resource name: **subscription-for-dp-offer1**
 
-    -  Description: **Offer for delegated providers containing Microsoft.Subscriptions services**.
+    - Description: **Offer for delegated providers containing Microsoft.Subscriptions services**.
 
-    -  Resource group: **dp-RG**
+    - Resource group: **dp-RG**
 
-    -  Make this offer public?: **No**
+    - Make this offer public?: **No**
 
     ![In the Azure Stack Hub administrator portal, the Basics tab of the New offer blade is displayed.](images/image10.png "Basics tab of the New offer blade")
 
-4.  Select the **Base plans** tab.
+4. Select the **Base plans** tab.
 
-5.  On the **Base plans** tab of the Create a new offer blade, select the **DP-subscription-plan1** checkbox.
+5. On the **Base plans** tab of the Create a new offer blade, select the **DP-subscription-plan1** checkbox.
 
     ![In the Azure Stack Hub administrator portal, the Base plans tab of the New offer blade is displayed.](images/image11.png "Base plans tab of the New offer blade")
 
-6.  Do not include Add-on plans, select **Review + create**, and then select **Create**. 
+6. Do not include Add-on plans, select **Review + create** then select **Create**. 
 
 ### Task 4: Create new subscriptions containing the offer with the delegated providers as their subscriber (as the Azure Stack Hub operator)
 
-1.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+1. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left. 
 
-2.  On the New blade, select **Offers + Plans** and then select **Subscription**.
+2. On the New blade, select **Offers + Plans** and then select **Subscription**.
 
-3.  On the New user subscription blade, specify the following settings:
+3. On the New user subscription blade, specify the following settings:
 
-    -  Display name: **Contoso-DP-subscription1**
+    - Display name: **Contoso-DP-subscription1**
 
-    -  User: UPN of the **Contoso AzSDP1** user you created earlier in this exercise.
+    - User: UPN of the **Contoso AzSDP1** user you created earlier in this exercise.
 
-    -  Offer: **Subscription-for-dp-offer1**
+    - Offer: **Subscription-for-dp-offer1**
 
-    -  Directory tenant: The Azure Active Directory tenant associated with the Azure Stack Hub environment.
+    - Directory tenant: The Azure Active Directory tenant associated with the Azure Stack Hub environment.
 
     ![In the Azure Stack Hub administrator portal, the New user subscription blade for Contoso is displayed.](images/image12.png "New user subscription blade")
 
-4.  Select **Create**. 
+4. Select **Create**. 
 
-5.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+5. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left. 
 
-6.  On the New blade, select **Offers + Plans** and then select **Subscription**.
+6. On the New blade, select **Offers + Plans** and then select **Subscription**.
 
-7.  On the New user subscription blade, specify the following settings:
+7. On the New user subscription blade, specify the following settings:
 
-    -  Display name: **Fabrikam-DP-subscription1**
+    - Display name: **Fabrikam-DP-subscription1**
 
-    -  User: UPN of the **Fabrikam AzSDP1** user you created earlier in this exercise.
+    - User: UPN of the **Fabrikam AzSDP1** user you created earlier in this exercise.
 
-    -  Offer: **Subscription-for-dp-offer1**
+    - Offer: **Subscription-for-dp-offer1**
 
-    -  Directory tenant: The Fabrikam Azure Active Directory tenant which you associated with the Azure Stack Hub environment in the previous exercise.
+    - Directory tenant: The Fabrikam Azure Active Directory tenant which you associated with the Azure Stack Hub environment in the previous exercise.
 
     ![In the Azure Stack Hub administrator portal, the New user subscription blade for Fabrikam is displayed.](images/image13.png "New user subscription blade")
 
-8.  Select **Create**. 
+8. Select **Create**. 
 
 ### Task 5: Create a plan to be delegated by delegated providers to users (as the Azure Stack Hub operator)
 
-1.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+1. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left. 
 
-2.  On the New blade, select **Offers + Plans** and then select **Plan**.
+2. On the New blade, select **Offers + Plans** and then select **Plan**.
 
-3.  On the Basics tab of the New plan blade, specify the following settings:
+3. On the Basics tab of the New plan blade, specify the following settings:
 
-    -  Display name: **DP-services-plan1**
+    - Display name: **DP-services-plan1**
 
-    -  Resource name: **dp-services1-plan**
+    - Resource name: **dp-services1-plan**
 
-    -  Description: **Delegated provider plan containing services to be delegated to users**.
+    - Description: **Delegated provider plan containing services to be delegated to users**.
 
-    -  Resource group: **dp-RG**
+    - Resource group: **dp-RG**
 
     ![In the Azure Stack Hub administrator portal, the Basics tab of the New plan blade is displayed.](images/image14.png "Basics tab of the New plan blade")
 
-4.  Select the **Services** tab.
+4. Select the **Services** tab.
 
-5.  On the Services tab of the New plan blade, select the **Microsoft.Storage** checkbox.
+5. On the Services tab of the New plan blade, select the **Microsoft.Storage** checkbox.
 
     ![In the Azure Stack Hub administrator portal, the Services tab of the New plan blade is displayed.](images/image15.png "Services tab of the New plan blade")
 
-6.  Select the **Quotas** tab.
+6. Select the **Quotas** tab.
 
-7.  On the Quotas blade, select **Create new** next to the **Microsoft Storage** drop-down list.
+7. On the Quotas blade, select **Create new** next to the **Microsoft Storage** drop-down list.
 
-8.  On the Create Storage quota blade, specify the following settings:
+8. On the Create Storage quota blade that appears, specify the following settings:
 
-    -  Name: **dp-storage-quota1**
+    - Name: **dp-storage-quota1**
 
-    -  Maximum capacity (GB): **200**
+    - Capacity (GB): **200**
 
-    -  Total number of storage accounts: **1**
+    - Number of storage accounts: **1**
 
     ![In the Azure Stack Hub administrator portal, the Quotas tab of the New plan blade and the Create Storage quotas blade are displayed.](images/image16.png "Quotas tab of the New plan blade")
 
-9.  Select **OK**. This will automatically set the **Microsoft Storage** drop-down list entry to **dp-storage-quota1**.
+9. Select **OK**. This will automatically set the **Microsoft Storage** drop-down list entry to **dp-storage-quota1**.
 
-10. Select **Review + create** and then select **Create**. 
+10. Select **Review + create** then select **Create**. 
 
 ### Task 6: Create an offer based on the plan containing Microsoft.Storage (as the Azure Stack Hub operator)
 
-1.  In the Azure Stack Hub administrator portal, select **+ Create a resource**. 
+1. In the Azure Stack Hub administrator portal, select **+ Create a resource** on the left. 
 
-2.  On the New blade, select **Offers + Plans** and then select **Offer**.
+2. On the New blade, select **Offers + Plans** and then select **Offer**.
 
-3.  On the Basics tab of the Create new offer blade, specify the following settings:
+3. On the Basics tab of the Create new offer blade, specify the following settings:
 
-    -  Display name: **services-for-dp-offer1**
+    - Display name: **services-for-dp-offer1**
 
-    -  Resource name: **cotodp-services1-offer**
+    - Resource name: **services-for-dp-offer1**
 
-    -  Description: **Offer for delegated providers containing Microsoft.Storage services**.
+    - Description: **Offer for delegated providers containing Microsoft.Storage services**.
 
-    -  Resource group: **dp-RG**
+    - Resource group: **dp-RG**
 
-    -  Make this offer public?: **No**
+    - Make this offer public?: **No**
 
     ![In the Azure Stack Hub administrator portal, the Basics tab of the Create a new offer blade is displayed.](images/image17.png "Basics tab of the Create a new offer blade")
 
-4.  Select the **Base plans** tab.
+4. Select the **Base plans** tab.
 
-5.  On the Base plans tab of the Create a new offer blade, select the **DP-services-plan1** checkbox.
+5. On the Base plans tab of the Create a new offer blade, select the **DP-services-plan1** checkbox.
 
     ![In the Azure Stack Hub administrator portal, the Base plans tab of the Create a new offer blade is displayed.](images/image18.png "Base plans tab of the Create a new offer blade")
 
-6.  Do not include Add-on plans, select **Review + create**, and then select **Create**. 
+6. Do not include Add-on plans, select **Review + create**, and then select **Create**. 
 
 ### Task 7: Delegate the offer to delegated providers (as the Azure Stack Hub operator)
 
-1.  In the Azure Stack Hub administrator portal, select **All services** and then select **Offers**. 
+1. In the Azure Stack Hub administrator portal, select **All services** on the left then select **Offers**. 
 
-2.  On the Offers blade, select **services-for-dp-offer1**.
+2. On the Offers blade, select **services-for-dp-offer1**.
 
-3.  On the services-for-dp-offer1 blade, select **Delegated providers**.
+3. On the services-for-dp-offer1 blade, select **Delegated providers** under **Settings** on the left.
 
-4.  Select **+ Add**.
+4. Select **+ Add**.
 
-5.  On the Delegate offer blade, specify the following settings:
+5. On the Delegate offer blade, specify the following settings and select **Delegate**. 
 
-    -  Name: Accept the default name.
+    - Name: **Accept the default name.**
 
-    -  Pick the delegated provider subscription: **Contoso-DP-subscription1**.
+    - Pick delegated provider subscription: **Contoso-DP-subscription1**.
 
     ![In the Azure Stack Hub administrator portal, the Delegate offer for Contoso subscriptions blade is displayed.](images/image19.png "Delegate offer")
 
-6.  Select **Delegate**. 
+6. Select **+ Add** again.
 
-7.  In the Azure Stack Hub administrator portal, select **All services** and then select **Offers**. 
+7. On the Delegate offer blade, specify the following settings and select **Delegate**
 
-8.  On the Offers blade, select **services-for-dp-offer1**.
+    - Name: **Accept the default name.**
 
-9.  On the services-for-dp-offer1 blade, select **Delegated providers**.
-
-10. Select **+ Add**.
-
-11. On the Delegate offer blade, specify the following settings:
-
-    -  Name: accept the default name.
-
-    -  Pick the delegated provider subscription: **Fabrikam-DP-subscription1**.
+    - Pick the delegated provider subscription: **Fabrikam-DP-subscription1**.
 
     ![In the Azure Stack Hub administrator portal, the Delegate offer for Fabrikam subscriptions blade is displayed.](images/image20.png "Delegate offer")
-
-12. Select **Delegate**. 
 
 ### Task 8: Create a delegated provider offer for Contoso users (as the Contoso delegated provider) based on offer from the Azure Stack Hub operator
 
    > **Note**: This will allow Contoso users to create subscriptions based on the offer from the delegated provider.
 
-1.  Start a web browser with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **Contoso AzSDP1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+1. Start a web browser with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **Contoso AzSDP1** account you created in the first task of this exercise. In the Update your password window, change the password to something you'll remember.
 
-2.  In the Azure Stack Hub user portal, select **All services** and then select **Offers**. 
+2. In the Azure Stack Hub user portal, select **All services** on the left then select **Offers**. Then select **+ Add**. 
 
-3.  On the Create a new offer blade, select **Delegated offer**.
+3. On the Create a new offer blade, select **Delegated offer**.
 
-4.  On the Delegated offer blade, select the entry corresponding to the delegated offer based on **services-for-dp-offer1**.
+4. On the Delegated offer blade, select the entry corresponding to the delegated offer based on **services-for-dp-offer1**.
 
-5.  On the Create a new offer blade, specify the following settings:
+5. On the Create a new offer blade, specify the following settings:
 
-    -  Display name: the name matching the **Delegated offer** entry.
+    - Display name: **The name matching the *Delegated offer* entry.**
 
-    -  Resource name: the name matching the **Delegated offer** entry.
+    - Resource name: **The name matching the *Delegated offer* entry.**
 
-    -  Provider subscription: **Contoso-DP-subscription1**
+    - Provider subscription: **Contoso-DP-subscription1**
 
-    -  Resource group: the name of a new resource group **Contoso-dp1-RG**.
+    - Resource group: **(Create new) Contoso-dp1-RG**.
 
     ![In the Azure Stack Hub user portal, the Create a new offer for Contoso is displayed.](images/image21.png "Create a new offer")
 
-6.  Select **Create**. 
+6. Select **Create**. 
 
-7.  Back on the **Offers** blade, select the newly created offer.
+7. Back on the **Offers** blade, select the newly created offer.
 
     > **Note**: You might need to select **Refresh**.
 
-8.  On the blade of the newly created offer, select **Change state** and, in the drop-down list, select **Public**.
+8. On the blade of the newly created offer, select **Change state** and, in the drop-down list, select **Public**.
 
     ![In the Azure Stack Hub user portal, the delegated-services-for-dp-offer1 blade with the Change state drop-down list and the Public entry selected is displayed.](images/image22.png "delegated-services-for-dp-offer1 blade")
 
-9.  In the Azure Stack Hub user portal, select **All services**. 
+9. In the Azure Stack Hub user portal, select **All services** on the left. 
 
 10. In the list of services, select **Subscriptions**.
 
 11. On the Subscriptions blade, select **Contoso-DP-subscription1**.
 
-12. On the Contoso-DP-subscription1 blade, select **Properties**.
+12. On the Contoso-DP-subscription1 blade, select **Properties** under **Settings** on the left.
 
 13. On the properties blade, copy the value of the PORTAL URL to clipboard. You will need it in the next task of this exercise. 
 
@@ -890,35 +880,35 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
    > **Note**: This will allow Fabrikam users to create subscriptions based on the offer from the delegated provider.
 
-1.  Start a web browser with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **Fabrikam AzSDP1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+1. Start a web browser with the InPrivate Browsing option, navigate to the Azure Stack Hub user portal at <https://portal.local.azurestack.external/> and, when prompted, authenticate by using the **Fabrikam AzSDP1** account you created in the first task of this exercise. In the Update your password window, change the password to something you'll remember.
 
-2.  In the Azure Stack Hub user portal, select **All services** and then select **Offers**. 
+2. In the Azure Stack Hub user portal, select **All services** on the left then select **Offers**. 
 
-3.  On the Offers blade, select **+ Add**.
+3. On the Offers blade, select **+ Add**.
 
-4.  On the Create a new offer blade, select **Delegated offer**.
+4. On the Create a new offer blade, select **Delegated offer**.
 
-5.  On the Delegated offer blade, select the entry corresponding to the delegated offer based on **services-for-dp-offer1**.
+5. On the Delegated offer blade, select the entry corresponding to the delegated offer based on **services-for-dp-offer1**.
 
-6.  On the Create a new offer blade, specify the following settings:
+6. On the Create a new offer blade, specify the following settings:
 
-    -  Display name: the name matching the **Delegated offer** entry.
+    - Display name: the name matching the **Delegated offer** entry.
 
-    -  Resource name: the name matching the **Delegated offer** entry.
+    - Resource name: the name matching the **Delegated offer** entry.
 
-    -  Provider subscription: **Fabrikam-DP-subscription1**
+    - Provider subscription: **Fabrikam-DP-subscription1**
 
-    -  Resource group: the name of a new resource group **Fabrikam-dp1-RG**
+    - Resource group: the name of a new resource group **Fabrikam-dp1-RG**
 
     ![In the Azure Stack Hub user portal, the Create a new offer for Fabrikam is displayed.](images/image23.png "Create a new offer")
 
-7.  Select **Create**. 
+7. Select **Create**. 
 
-8.  Back on the **Offers** blade, select the newly created offer.
+8. Back on the **Offers** blade, select the newly created offer.
 
     > **Note**: You might need to select **Refresh**.
 
-9.  On the blade of the newly created offer, select **Change state** and, in the drop-down list, select **Public**.
+9. On the blade of the newly created offer, select **Change state** and, in the drop-down list, select **Public**.
 
     ![In the Azure Stack Hub user portal, the delegated-services-for-dp-offer1 blade with the Change state drop-down list and the Public entry selected is displayed.](images/image24.png "Change state drop-down list")
 
@@ -938,25 +928,23 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 ### Task 10: Sign up for the delegated provider's offer (as a Contoso user)
 
-1.  Start a web browser with the InPrivate Browsing option, navigate to the Contoso delegated provider portal URL you identified earlier in this exercise, and, when prompted, authenticate by using the **Contoso User1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+1. Start a web browser with the InPrivate Browsing option, navigate to the Contoso delegated provider portal URL you identified earlier in this exercise, and, when prompted, authenticate by using the **Contoso User1** account you created in the first task of this exercise. In the Update your password window, change the password to something you'll remember.
 
     > **Note**: Make sure **NOT** to use the Azure Stack Hub user portal URL in this case.
 
-2.  In the Azure Stack Hub user portal, select **Get a subscription** on the dashboard. 
+2. In the Azure Stack Hub user portal, select **Get a subscription** on the dashboard. 
 
-3.  On the Get a subscription blade, in the Display name text box, type **Contoso-user1-subscription1**.
+3. On the Get a subscription blade, in the Display name text box, type **Contoso-user1-subscription1**.
 
-4.  Choose **Select an offer**.
+4. Choose **Select an offer**.
 
-5.  On the Choose an offer blade, select the name of the Contoso delegated offer created earlier in this exercise.
+5. On the Choose an offer blade, select the name of the Contoso delegated offer created earlier in this exercise and select **Create**.
 
-6.  Select **Create**.
-
-7.  In the message box **Your subscription has been created. You must refresh the portal to start using your subscription**, select **Refresh**. 
+6. In the message box **Your subscription has been created. You must refresh the portal to start using your subscription**, select **Refresh**. 
 
 ### Task 11: Sign up for the delegated provider's offer (as a Fabrikam user)
 
-1.  Start a web browser with the InPrivate Browsing option, navigate to the Fabrikam delegated provider portal URL you identified earlier in this exercise, and, when prompted, authenticate by using the **Fabrikam User1** account you created in the first task of this exercise. In the Update your password window, change the password to **demo@pass123**.
+1.  Start a web browser with the InPrivate Browsing option, navigate to the Fabrikam delegated provider portal URL you identified earlier in this exercise, and, when prompted, authenticate by using the **Fabrikam User1** account you created in the first task of this exercise. In the Update your password window, change the password to something you'll remember.
 
     > **Note**: Make sure NOT to use the Azure Stack Hub user portal URL in this case.
 
@@ -971,7 +959,6 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 6.  Select **Create**.
 
 7.  In the message box **Your subscription has been created. You must refresh the portal to start using your subscription**, select **Refresh**. 
-
 
 ## Exercise 4: Configure Role Based Access Control (RBAC)
 
@@ -1167,7 +1154,7 @@ In this exercise, you will configure Role Based Access Control using a custom ro
 
 17. When prompted, sign in by using the credentials of the **Fabrikam AzSReader1** account.
 
-18. When prompted, grant the target Azure AD tenant requested permissions by selecting **Accept**. In the Update your password window, change the password to **demo@pass123**.
+18. When prompted, grant the target Azure AD tenant requested permissions by selecting **Accept**. In the Update your password window, change the password to something you'll remember.
 
 19. Sign out as Fabrikam AzSReader1 from the Azure portal and close the window of the web browser using in private/incognito mode.
 
