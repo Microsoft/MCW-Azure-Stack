@@ -107,7 +107,7 @@ Duration: 15-30 minutes
 
     ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Plan is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image70.png "Featured Apps blade")
 
-5. In the New Plan blade, enter the following configuration then click **Next: Services**.
+5. In the New Plan blade, enter the following configuration then select **Next: Services**.
 
     - Display name: **PROD-Plan-1**
 
@@ -590,13 +590,13 @@ In this exercise, you will provision the admin website to be used by employees t
 
 1. In the Azure Stack Hub User portal, select **+ Create new resource -/> Web + Mobile -/> Web App**.
 
-2. Select the **Produdction** subscription. Specify a unique name for the Web App url, ensure the **same App Service Plan** as well as the **ContosoFinanceWeb** resource group you have used throughout the lab are selected then select **Create**.
+2. Select the **Production** subscription. Specify a unique name for the Web App URL, ensure the **same App Service Plan** as well as the **ContosoFinanceWeb** resource group you have used throughout the lab are selected then select **Create**.
 
     ![Fields in the Create blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image152.png "Create blade")
 
 3. Navigate to the **App Service** blade for the Admin app recently provisioned.
 
-    ![contosofinanceadmin option screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image153.png "App Service balde")
+    ![The Contosofinanceadmin option screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image153.png "App Service blade")
 
 4. On the **App Service** blade, select **Configuration** under **Settings** on the left.
 
@@ -644,7 +644,7 @@ In this exercise, you will provision the admin website to be used by employees t
 
 7. Notice how the API application loaded the Today's Offers area. Select through to one of the products and add it to your cart.
 
-    ![Screenshot of the Today\'s Offers webpage area.](images/Hands-onlabstep-by-step-AzureStackimages/media/image159.png "Todays Offers")
+    ![Screenshot of the Today\'s Offers webpage area.](images/Hands-onlabstep-by-step-AzureStackimages/media/image159.png "Today's Offers")
 
 8. Select **Apply**.
 

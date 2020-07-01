@@ -12,7 +12,6 @@ Before the hands-on lab setup guide
 July 2020
 </div>
 
-
 Information in this document, including URL and other Internet Web site references, is subject to change without notice. Unless otherwise noted, the example companies, organizations, products, domain names, e-mail addresses, logos, people, places, and events depicted herein are fictitious, and no association with any real company, organization, product, domain name, e-mail address, logo, person, place or event is intended or should be inferred. Complying with all applicable copyright laws is the responsibility of the user. Without limiting the rights under copyright, no part of this document may be reproduced, stored in or introduced into a retrieval system, or transmitted in any form or by any means (electronic, mechanical, photocopying, recording, or otherwise), or for any purpose, without the express written permission of Microsoft Corporation.
 
 Microsoft may have patents, patent applications, trademarks, copyrights, or other intellectual property rights covering subject matter in this document. Except as expressly provided in any written license agreement from Microsoft, the furnishing of this document does not give you any license to these patents, trademarks, copyrights, or other intellectual property.
@@ -25,6 +24,13 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
+- [Azure Stack Operate before the hands-on lab setup guide](#azure-stack-operate-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task 1: Provision an Azure VM to Host the Azure Stack Hub Development Kit](#task-1-provision-an-azure-vm-to-host-the-azure-stack-hub-development-kit)
+    - [Task 2: Install Azure Stack Hub Development Kit (Operations)](#task-2-install-azure-stack-hub-development-kit-operations)
+    - [Task 3: Prepare the Azure Stack Hub Operator Station](#task-3-prepare-the-azure-stack-hub-operator-station)
+    - [Task 4: Download and run the Azure Stack Hub Configurator Script](#task-4-download-and-run-the-azure-stack-hub-configurator-script)
 
 # Azure Stack Operate before the hands-on lab setup guide 
 
@@ -137,7 +143,7 @@ In this task you will execute a script that will download and provision Azure St
 
     > **Note:** Except VSCode, most of the next steps should be already configured on your VM - please check that the tools are there and you are able to configure them. VSCode is optional - you can perform all of the activities in the labs using just PowerShell, but you may want to explore the VSCode user interface, because it enhances interacting with Azure Stack Hub using PowerShell and ARM templates.
 
-10. Right-click **Start** and, in the right-hand menu, select **Command Prompt (Admin)**.
+10. Right-click **Start**, then select **Command Prompt (Admin)** in the right-hand menu.
 
 11. From the **Administrator: Command Prompt**, install appropriate VSCode extensions by running the following:
 

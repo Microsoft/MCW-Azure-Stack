@@ -2,7 +2,7 @@
 
 Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack as the deployment method to take advantage of Azure technologies while still maintaining compliance.
 
-January 2020
+July 2020
 
 ## Target audience
 
@@ -41,6 +41,8 @@ At the end of these hands-on labs, you will be better able to deploy and manage 
 
 ## Azure services and related products
 - Azure Stack
+- Azure Stack Hub
+- Azure Stack HCI
 - Azure App Services
 - Azure SQL Database
 - Azure Virtual Machines
