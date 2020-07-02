@@ -1,7 +1,7 @@
 ![Microsoft Cloud Workshops](https://github.com/Microsoft/MCW-Template-Cloud-Workshop/raw/master/Media/ms-cloud-workshop.png)
 
 ### **IMPORTANT**:
-At this time, the Azure Stack lab is currently broken. We are working on a fix and expect to have it in place mid-June.  Please check back soon and thank you for your patience.
+At this time, the Azure Stack lab is currently broken. We are working on a fix and expect to have it in place mid-July.  Please check back soon and thank you for your patience.
 
 
 <div class="MCWHeader1">
