@@ -75,6 +75,8 @@ New-AzResourceGroupDeployment -ResourceGroupName $rg -Name AzureStackonAzureVM -
 
 ```
 
+After the VM is deployed, login using **administrator** as the account and **demo@pass123** for the password.
+
 
 ### Task 2: Install Azure Stack Hub Development Kit (Operations)
 
@@ -97,7 +99,7 @@ In this task you will execute a script that will download and provision Azure St
 4. From the Administrator: Windows PowerShell window, invoke the installation of Azure Stack Hub Development Kit by running the following (ensure you replace the placeholder values, where `[tenant]` is the name of the Azure AD tenant associated with the Azure subscription you are using in this lab):
 
     ```powershell
-    .\Install-ASDK.ps1 -DownloadASDK -DeploymentType AAD -LocalAdminPass $localAdminPass -AADTenant [tenant].onmicrosoft.com -version '1907-20' -InfraAzureDirectoryTenantAdminCredential $azcred
+    .\Install-ASDK.ps1 -DownloadASDK -DeploymentType AAD -LocalAdminPass $localAdminPass -AADTenant [tenant].onmicrosoft.com -version '2002-35' -InfraAzureDirectoryTenantAdminCredential $azcred
     ```
 
     > **Note:** After about 75 minutes, the Azure VM will automatically restart.
