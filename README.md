@@ -28,9 +28,6 @@ At the end of the session, you will be able to determine which systems are good 
 
 ### Hands-on lab
 
-### **IMPORTANT**:
-At this time, the Azure Stack lab is currently broken. We are working on a fix and expect to have it in place mid-June.  Please check back soon and thank you for your patience.
-
 The content consists of two hands on lab paths, with their respective prerequisites. 
 
 The first hands-on lab starts with deploying the Azure Stack Development Kit, deploying the SQL Database and Azure App Service resource providers, as well as downloading several virtual machine images from the Azure Stack Marketplace. From there, you will implement a full taxonomy in Azure Stack consisting of a region, subscription, plan, offer, and quotas. After Azure Stack is configured, you will then deploy Azure SQL Database, Web and API apps and then deploy the Contoso application.

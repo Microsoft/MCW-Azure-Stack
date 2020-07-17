@@ -24,7 +24,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
 
 **Contents**
 
-- [Azure Stack Operate before the hands-on lab setup guide](#azure-stack-operate-before-the-hands-on-lab-setup-guide)
+- [Azure Stack Migrate before the hands-on lab setup guide](#azure-stack-migrate-before-the-hands-on-lab-setup-guide)
   - [Requirements](#requirements)
   - [Before the hands-on lab](#before-the-hands-on-lab)
     - [Task 1: Provision an Azure VM to Host the Azure Stack Hub Development Kit](#task-1-provision-an-azure-vm-to-host-the-azure-stack-hub-development-kit)
@@ -32,7 +32,7 @@ Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/in
     - [Task 3: Prepare the Azure Stack Hub Operator Station](#task-3-prepare-the-azure-stack-hub-operator-station)
     - [Task 4: Download and run the Azure Stack Hub Configurator Script](#task-4-download-and-run-the-azure-stack-hub-configurator-script)
 
-# Azure Stack Operate before the hands-on lab setup guide 
+# Azure Stack Migrate before the hands-on lab setup guide 
 
 ## Requirements
 

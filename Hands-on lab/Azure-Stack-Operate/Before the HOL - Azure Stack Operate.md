@@ -24,7 +24,13 @@ The names of manufacturers, products, or URLs are provided for informational pur
 Microsoft and the trademarks listed at <https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/Usage/General.aspx> are trademarks of the Microsoft group of companies. All other trademarks are property of their respective owners.
 
 **Contents**
-
+- [Azure Stack Operate before the hands-on lab setup guide](#azure-stack-operate-before-the-hands-on-lab-setup-guide)
+  - [Requirements](#requirements)
+  - [Before the hands-on lab](#before-the-hands-on-lab)
+    - [Task 1: Provision an Azure VM to Host the Azure Stack Hub Development Kit](#task-1-provision-an-azure-vm-to-host-the-azure-stack-hub-development-kit)
+    - [Task 2: Install Azure Stack Hub Development Kit (Operations)](#task-2-install-azure-stack-hub-development-kit-operations)
+    - [Task 3: Prepare the Azure Stack Hub Operator Station](#task-3-prepare-the-azure-stack-hub-operator-station)
+    - [Task 4: Download and run the Azure Stack Hub Configurator Script](#task-4-download-and-run-the-azure-stack-hub-configurator-script)
 
 # Azure Stack Operate before the hands-on lab setup guide 
 
@@ -44,9 +50,9 @@ In this task, you will provision an Azure VM that will host the Azure Stack Deve
 
 Execute the following PowerShell code. When prompted for Azure credentials, you will need to authenticate with an Azure Account that has Global Administrator access on the Azure AD Tenant as well as Owner rights on the Azure subscription. 
 
-There will be a second prompt for the local administrator account. Specify demo@pass123 when prompted. 
+There will be a second prompt for the local administrator account. Specify **demo@pass123** when prompted. 
 
-> Note: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
+> **Note**: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
 
 ```PowerShell 
 Connect-AzAccount

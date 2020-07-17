@@ -892,13 +892,13 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 6. On the Create a new offer blade, specify the following settings:
 
-    - Display name: the name matching the **Delegated offer** entry.
+    - Display name: The name matching the **Delegated offer** entry.
 
-    - Resource name: the name matching the **Delegated offer** entry.
+    - Resource name: The name matching the **Delegated offer** entry.
 
     - Provider subscription: **Fabrikam-DP-subscription1**
 
-    - Resource group: the name of a new resource group **Fabrikam-dp1-RG**
+    - Resource group: The name of a new resource group **Fabrikam-dp1-RG**
 
     ![In the Azure Stack Hub user portal, the Create a new offer for Fabrikam is displayed.](images/image23.png "Create a new offer")
 

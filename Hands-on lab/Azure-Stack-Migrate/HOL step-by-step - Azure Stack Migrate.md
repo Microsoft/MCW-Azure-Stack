@@ -33,6 +33,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
   - [Help references](#help-references)
   - [Requirements](#requirements)
   - [Exercise 1: Create Azure Stack Hub Deployment Taxonomy for Tenants](#exercise-1-create-azure-stack-hub-deployment-taxonomy-for-tenants)
+    - [Task 1: Create the Deployment Taxonomy](#task-1-create-the-deployment-taxonomy)
   - [Exercise 2: Deploy Contoso Financial Web Application](#exercise-2-deploy-contoso-financial-web-application)
     - [Task 1: Create the Web App](#task-1-create-the-web-app)
     - [Task 2: Provision an Azure Storage Account](#task-2-provision-an-azure-storage-account)
@@ -96,6 +97,8 @@ In this exercise, you will create the subscriptions, offers, and plans that will
 Duration: 15-30 minutes
 
 ![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
+
+### Task 1: Create the Deployment Taxonomy
 
 1. Within the Remote Desktop session to **AzSHOST-1**, start a browser and navigate to the **Azure Stack Admin Portal** via the desktop icon.
 
@@ -452,7 +455,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
     ![In the App Service blade, under settings, Application settings is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image134.png "App Service blade")
 
-2. Scroll down and locate the **Application settings** section
+2. Scroll down and locate the **Application settings** section.
 
     ![Screenshot of the App settings section.](images/Hands-onlabstep-by-step-AzureStackimages/media/image135.png "App Service blade")
 
@@ -464,7 +467,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
     
     Example: <https://contosofinanceapi.appservice.local.azurestack.external/api/get>
 
-       ![Under App settings, offersAPIUrl and its URL are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image136.png "App settings")
+    ![Under App settings, offersAPIUrl and its URL are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image136.png "App settings")
 
     > **Note**: Ensure the API URL is using **SSL** (https://), or you will see a CORS errors when loading the webpage.
 
@@ -486,7 +489,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 ### Task 1: Create an Azure function to generate PDF receipts
 
-1. From your Azure Stack Hub Host, navigate to the following repository: and select **Clone**, then **Download ZIP**. After the file is downloaded, extract it to a new folder named **C:\\HoL**.
+1. From your Azure Stack Hub Host, navigate to the following repository and select **Clone**, then **Download ZIP**. After the file is downloaded, extract it to a new folder named **C:\\HoL**.
 
     ```
     https://github.com/opsgility/contosofinancefunction
@@ -574,7 +577,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
    - Type: **SQLAzure**
 
-    **Note:** You may receive an error message that says *value is a required property on all connection string*. This can be ignored.
+     > **Note:** You may receive an error message that says *value is a required property on all connection string*. This can be ignored.
 
 13. Select **Save** on the **Configuration** page.
 
