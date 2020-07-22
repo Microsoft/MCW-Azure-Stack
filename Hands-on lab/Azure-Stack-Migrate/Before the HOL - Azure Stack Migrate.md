@@ -52,7 +52,7 @@ Execute the following PowerShell code. When prompted for Azure credentials, you 
 
 There will be a second prompt for the local administrator account. Specify demo@pass123 when prompted. 
 
-> Note: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
+> **Note**: Ensure the Azure Subscription has enough cores available on the quota to deploy a VM sized: Standard E20s v3.
 
 ```PowerShell 
 Connect-AzAccount
