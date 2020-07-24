@@ -63,7 +63,7 @@ At the end of this hands-on lab, you will be better able to deploy and manage so
 
 ## Overview
 
-Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack Hub as the deployment method to take advantage of Azure technologies while still maintaining compliance.
+Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy, they are planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack Hub as the deployment method to take advantage of Azure technologies while still maintaining compliance.
 
 ## Solution architecture
 
@@ -81,7 +81,7 @@ Contoso Finance is one of the largest banks in the United States with a signific
 | Azure Stack Hub Operator documentation | <https://docs.microsoft.com/en-us/azure/azure-stack/> |
 | Azure Stack Hub networking | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-network-overview/> |
 | Deploy apps to Azure and Azure Stack Hub | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline> |
-| White paper | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
+| Azure Stack: An extension of Azure | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
 | PowerShell for Azure Stack Hub | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-powershell-install> |
 | Azure Stack Hub marketplace | <https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-marketplace-azure-items> |
 
@@ -124,11 +124,11 @@ Duration: 15-30 minutes
 
     ![Services are listed in the Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
 
-7. For Quotas, go through and choose the default quotas where available with the exception of the **Microsoft.Web** entry. Next, select **Create New** next to the **Microsoft.Web** entry.
+7. For Quotas, go through and choose the default quotas where available, with the exception of the **Microsoft.Web** entry. Next, select **Create New** next to the **Microsoft.Web** entry.
 
-    ![The Quotas blade](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
+    ![The Quotas blade with the default quotas selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
-8. On the **Create Quota** blade, specify the following information and select **Ok**:
+8. On the **Create Quota** blade, specify the following information and select **OK**:
 
     - Name: **WebQuota**
 
@@ -200,11 +200,11 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 ### Task 1: Create the Web App
 
-1. From within the Azure Stack Hub User portal, select **+ Create a resource -\> Web + Mobile -\> Web App.**
+1. From within the Azure Stack Hub User portal, select **+ Create a resource -\> Web + Mobile -\> Web App**.
 
 2. On the **Web App** blade, select the **Production** subscription then select **App Service plan/Location**.
 
-    ![App Service plan/Location option screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image110.png "App service plan")
+    ![App Service plan/Location option screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image110.png "App service plan")
 
 3. Create a new App Service plan called **ContosoFinanceWebPlan** with the **D1 Shared** pricing tier and select **OK**.
 
@@ -403,7 +403,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
     ![Under API, CORS is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image130.png "CORS")
 
-4. In the **ALLOWED ORIGINS** text box specify \* and select **Save**.
+4. In the **Allowed Origins** text box specify \* and select **Save**.
 
     ![In the App Service blade, Allowed Origins is set to asterisk, and Save is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image131.png "App Service blade")
 
@@ -503,7 +503,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 3. Specify the following settings on the **Create Function App** blade using the following inputs and select **Create**. 
 
-    - App name: **Specify a unique name**
+    - App name: **Specify a unique name**.
 
     - Subscription: **Production**
 
@@ -519,7 +519,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
     **Note:** Select the **Production** subscription before the other values. 
 
-4. Using the Azure Stack Hub portal, open the Function App you just created, select **Functions** on the left then **New function**.
+4. Using the Azure Stack Hub portal, open the Function App you just created, select **Functions** on the left, then **New function**.
 
     ![The New function button is selected in the Function Apps blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image142.png "Function Apps blade")
 
@@ -539,7 +539,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 7. Expand the **View files** area on the far right of the code window, and select **Upload**.
 
-    ![The view files section can be displayed on the far right](images/Hands-onlabstep-by-step-AzureStackimages/media/image145.png "View files")
+    ![The view files section can be displayed on the far right.](images/Hands-onlabstep-by-step-AzureStackimages/media/image145.png "View files")
     
     ![In the View files section, the Upload link is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image146.png "View files")
 
@@ -591,7 +591,7 @@ In this exercise, you will provision the admin website to be used by employees t
 
 ### Task 1: Provision the Contoso Finance Admin Web App
 
-1. In the Azure Stack Hub User portal, select **+ Create new resource -/> Web + Mobile -/> Web App**.
+1. In the Azure Stack Hub User portal, select **+ Create new resource -> Web + Mobile -> Web App**.
 
 2. Select the **Production** subscription. Specify a unique name for the Web App URL, ensure the **same App Service Plan** as well as the **ContosoFinanceWeb** resource group you have used throughout the lab are selected then select **Create**.
 
