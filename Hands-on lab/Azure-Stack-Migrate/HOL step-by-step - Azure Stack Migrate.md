@@ -497,7 +497,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
     ![In the Azure Stack Hub Host, the Clone or download button is selected, and under Clone with HTTPS, the Download ZIP button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image139.png "Azure Stack Hub Host")
 
-2. From the User portal, select **+ Create a resource -/> Web + Mobile -/> Function App**.
+2. From the User portal, select **+ Create a resource -> Web + Mobile -> Function App**.
 
     ![Function App option screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image140.png "Function App option")
 
