@@ -1,29 +1,12 @@
-This repository contains two Microsoft Cloud Workshops.
-- [Azure Stack Migrate](#azure-stack-migrate)
-  - [Target audience](#target-audience)
-  - [Abstracts](#abstracts)
-    - [Workshop](#workshop)
-    - [Whiteboard design session](#whiteboard-design-session)
-    - [Hands-on lab](#hands-on-lab)
-  - [Azure services and related products](#azure-services-and-related-products)
-  - [Related references](#related-references)
-- [Azure Stack Operate](#azure-stack-operate)
-  - [Target audience](#target-audience-1)
-  - [Abstracts](#abstracts-1)
-    - [Workshop](#workshop-1)
-    - [Whiteboard design session](#whiteboard-design-session-1)
-    - [Hands-on lab](#hands-on-lab-1)
-  - [Azure services and related products](#azure-services-and-related-products-1)
-  - [Related references](#related-references-1)
-  - [Help & Support](#help--support)
-    - [Please allow 5 - 10 business days for review and resolution of issues.](#please-allow-5---10-business-days-for-review-and-resolution-of-issues)
+# Azure Stack
 
-July 2020
+This Microsoft Cloud Workshop contains two workshops, Azure Stack Migrate, and Azure Stack Operate. Scenarios and abstracts for each is provided below.
 
 # Azure Stack Migrate
 
-Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack as the deployment method to take advantage of Azure technologies while still maintaining compliance. In this workshop, you will help them design a migration strategy for moving one of their key workloads to Azure.
+Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they are planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack as the deployment method to take advantage of Azure technologies while still maintaining compliance. In this workshop, you will help them design a migration strategy for moving one of their key workloads to Azure.
 
+July 2020
 
 ## Target audience
 
@@ -65,11 +48,11 @@ At the end of the hands-on lab, you will be better able to deploy and manage sol
 ## Related references
 - [MCW](https://microsoftcloudworkshop.com)
 
-
 # Azure Stack Operate
-Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack as the deployment method to take advantage of Azure technologies while still maintaining compliance. In this workshop, you will help design an  strategy to ensure workloads are operating using best practices.
 
+Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they are planning to migrate their loan web applications to a hybrid cloud solution. During the planning stages, Contoso realized they would not be able to retain their customer data in US based Azure regions due to corporate compliance policies and regulatory issues. They have selected Azure Stack as the deployment method to take advantage of Azure technologies while still maintaining compliance. In this workshop, you will help design an  strategy to ensure workloads are operating using best practices.
 
+July 2020
 
 ## Target audience
 
