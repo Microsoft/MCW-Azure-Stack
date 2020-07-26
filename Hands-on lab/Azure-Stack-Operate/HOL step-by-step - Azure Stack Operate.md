@@ -76,7 +76,7 @@ In this hands-on lab, you will perform common Azure Stack Hub operational tasks 
 
 ## Overview
 
-Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they planning to migrate their loan web applications to a hybrid cloud solution. 
+Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. As part of Contoso's shift to a cloud first strategy they are planning to migrate their loan web applications to a hybrid cloud solution. 
 
 As the result of a recent acquisition of a financial analytics company named Fabrikam, based in Houston, Texas, Contoso IT management team plans to integrate a number of Fabrikam's internally developed applications to process and analyze the customer data being used by the Contoso's customer facing mortgage application. Fabrikam has skilled development and infrastructure teams, with extensive Azure experience and its own Azure Active Directory tenant. Contoso is very interested in leveraging that experience and plans to offer the Fabrikam IT team sufficient level of autonomy when working on the integration tasks. That autonomy should include the ability of the Fabrikam IT team to offer to their users cloud resources required for application development, implementation, and maintenance. At the same time, Contoso wants to ensure proper governance and facilitate implementation of corporate standards via centralized control of the service catalog content and through automation. 
 
@@ -100,14 +100,14 @@ With these goals in mind, Contoso has challenged FT to help implement the hosted
 | Azure Stack Hub Operator documentation | <https://docs.microsoft.com/en-us/azure/azure-stack/> |
 | Azure Stack Hub networking | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-network-overview/> |
 | Deploy apps to Azure and Azure Stack Hub | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline> |
-| White paper | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
+| Azure Stack: An extension of Azure | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
 | PowerShell for Azure Stack Hub | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-powershell-install> |
 | Azure Stack Hub marketplace | <https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-marketplace-azure-items> |
 
 
 ## Requirements
 
--   Complete all tasks described in **Before the HOL - Azure Stack Operate**
+-   Complete all tasks described in **Before the HOL - Azure Stack Operate**.
 
 ## Exercise 1: Create and publish an Azure Stack Hub Marketplace item
 
@@ -145,7 +145,7 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
 
     ![In the Resize and Skew window, the image size is set to the required values.](images/image3.png "Resize")
 
-9.  Save the resulting image as ***C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\Icons\\Screenshot.png**.  When prompted whether to continue, select **OK** and close Microsoft Paint. 
+9.  Save the resulting image as ***C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\Icons\\Screenshot.png***.  When prompted whether to continue, select **OK** and close Microsoft Paint. 
 
     > **Note**: You are using sample images for the sake of simplicity. When creating and publishing custom Azure Stack Hub Marketplace solutions, you would create your own icons and screenshots that represent the characteristics of these solutions. Keep in mind that you must ensure that their sizes match those specified in the documentation available at https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md.
 
@@ -161,9 +161,9 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
 		-OutFile 'C:\Downloads\Azure Stack Marketplace Item Generator and Sample\ContosoWebAppTemplate\DeploymentTemplates\ContosoWebAppTemplate.json'
      ```
 
-14. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\strings** folder.
+13. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate\\strings** folder.
 
-15. Open the file **resources.resjson** in Notepad, modify its content so it matches the following, save, and close the file:
+14. Open the file **resources.resjson** in Notepad, modify its content so it matches the following, save, and close the file:
 
     ```
     {
@@ -176,9 +176,9 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
     }
     ```
 
-16. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate** folder.
+15. In File Explorer, navigate to the **C:\\Downloads\\Azure Stack Marketplace Item Generator and Sample\\ContosoWebAppTemplate** folder.
 
-17. Open the file **manifest.json** in Notepad, modify its content so it matches the following, save, and close the file:
+16. Open the file **manifest.json** in Notepad, modify its content so it matches the following, save, and close the file:
 
     ```
     { "$schema": "https://gallery.azure.com/schemas/2014-09-01/manifest.json#",
@@ -219,7 +219,7 @@ In this exercise, you will create and publish custom Azure Stack Hub Marketplace
     }
     ```
 
-18. Open the file **UIDefinition.json** in Notepad, review its content, and close the file without making any modifications:
+17. Open the file **UIDefinition.json** in Notepad, review its content, and close the file without making any modifications:
 
     ```
     {
@@ -538,7 +538,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 3. On the Azure Active Directory blade of the tenant associated with the Azure Stack Hub environment, select **Users** under **Manage** on the left. 
 
-4. On the Users - All users blade, select **+ New user**
+4. On the Users - All users blade, select **+ New user**.
 
 5. On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
@@ -644,7 +644,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
     - Resource name: **dp-subscription-plan1**
 
-    - Description: **Delegated provider plan containing Microsoft.Subscriptions**
+    - Description: **Delegated provider plan containing Microsoft.Subscriptions**.
 
     - Resource group: **(Create new) dp-RG**
 
@@ -820,7 +820,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 6. Select **+ Add** again.
 
-7. On the Delegate offer blade, specify the following settings and select **Delegate**
+7. On the Delegate offer blade, specify the following settings and select **Delegate**.
 
     - Name: **Accept the default name.**
 
@@ -964,7 +964,7 @@ In this exercise, you will implement Azure Stack Hub delegation in a multi-tenan
 
 Duration: 30 minutes
 
-In this exercise, you will configure Role Based Access Control using a custom role
+In this exercise, you will configure Role Based Access Control using a custom role.
 
 ### Task 1: Create a custom role
 
@@ -1030,7 +1030,7 @@ In this exercise, you will configure Role Based Access Control using a custom ro
 
 3.  On the Azure Active Directory blade of the Fabrikam Azure Active Directory tenant, select **Users**.
 
-4.  On the Users - All users blade, select **+ New user**
+4.  On the Users - All users blade, select **+ New user**.
 
 5.  On the **New user** blade, ensure that the **Create user** option is selected, specify the following settings, note the values of the full user name (including the domain suffix) and the randomly generated password, and select **Create**:
 
@@ -1126,7 +1126,7 @@ In this exercise, you will configure Role Based Access Control using a custom ro
 
     -  Name: **Fabrikam AzSReader1**
 
-    -  User name: the UPN of the Fabrikam Operator1 user you created in the previous exercise.
+    -  User name: **The UPN of the Fabrikam Operator1 user you created in the previous exercise**.
 
     -  First name: not set
 
