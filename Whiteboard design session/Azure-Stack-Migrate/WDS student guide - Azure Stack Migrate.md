@@ -26,7 +26,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- TOC -->
 
-- [Azure Stack whiteboard design session student guide](#azure-stack-whiteboard-design-session-student-guide)
+- [Azure Stack Migrate whiteboard design session student guide](#azure-stack-migrate-whiteboard-design-session-student-guide)
   - [Abstract and learning objectives](#abstract-and-learning-objectives)
   - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
     - [Customer situation](#customer-situation)
@@ -40,7 +40,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
-#  Azure Stack whiteboard design session student guide
+#  Azure Stack Migrate whiteboard design session student guide
 
 ## Abstract and learning objectives 
 
