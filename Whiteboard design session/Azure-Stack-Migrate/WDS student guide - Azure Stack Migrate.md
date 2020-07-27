@@ -66,19 +66,19 @@ Directions: With all participants in the session, the facilitator/SME presents a
 
 ### Customer situation
 
-Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. Their mortgage business is headquartered in Dallas, Texas. During a meeting with the newly appointed CTO Doreen Newton, the IT team learned that Contoso is shifting to a cloud first strategy after seeing first hand the advantages of the cloud from Doreen's previous role leading her prior company through a digital transformation. Her message, "I have seen how applications and infrastructures are deployed and run using Microsoft Azure with both PaaS and IaaS services. These capabilities can transform Contoso with more agility and long-term cost effectiveness." resonated with other members of the IT organization.
+Contoso Finance is one of the largest banks in the United States with a significant amount of their revenue coming from their residential mortgage business. Their mortgage business is headquartered in Dallas, Texas. During a meeting with the newly appointed CTO Doreen Newton, the IT team learned that Contoso is shifting to a cloud first strategy after seeing firsthand the advantages of the cloud from Doreen's previous role leading her prior company through a digital transformation. Her message, "I have seen how applications and infrastructures are deployed and run using Microsoft Azure with both PaaS and IaaS services. These capabilities can transform Contoso with more agility and long-term cost effectiveness." resonated with other members of the IT organization.
 
 Contoso's current workloads run in their Dallas based datacenter using VMWare based virtual machines. One of the primary applications the company is interested in modernizing to take advantage of the cloud is a consumer facing mortgage application. This application is handling new mortgage requests and facilitating access of consumers to their current mortgage information. The current implementation of the mortgage application is hosted in a public facing website on Microsoft Internet Information Server (IIS) with a backend database using SQL Server 2012. The application has several modules that run as Windows Services. These modules are responsible for running credit checks and generating PDFs for transactions. The application uses Microsoft Message Queue (MSMQ) for interacting between modules. The application also allows customers to download several publicly accessible PDF files that provide an overview of the bank's mortgage related products.
 
 As the result of a recent acquisition of a financial analytics company named Fabrikam, based in Houston, Texas, Contoso IT management team plans to integrate a number of Fabrikam's internally developed applications to process and analyze the customer data being used by the Contoso's customer facing mortgage application. Fabrikam has skilled development and infrastructure teams, with extensive Azure experience and its own Azure Active Directory tenant. Contoso is very interested in leveraging that experience and plans to offer the Fabrikam IT team sufficient level of autonomy when working on the integration tasks. That autonomy should include the ability of the Fabrikam IT team to offer to their users cloud resources required for application development, implementation, and maintenance. At the same time, Contoso wants to ensure proper governance and facilitate implementation of corporate standards via centralized control of the service catalog content and through automation. 
 
-During the planning stages, Contoso realized they would not be able to move their customer, on-premises resident data to US based Azure regions due to corporate compliance policies and regulatory issues. "This was a cause for great concern, as this means Contoso may not be able to move to cloud-based services as fast as we initially envisioned" says Max Rubin VP of Network Engineering. Doreen Newton took on the challenge to investigate alternatives to allow Contoso to proceed with getting the benefits of the cloud while not breaking rules for corporate compliance.
+During the planning stages, Contoso realized they would not be able to move their customer, on-premises resident data to US based Azure regions due to corporate compliance policies and regulatory issues. "This was a cause for great concern, as this means Contoso may not be able to move to cloud-based services as fast as we initially envisioned" says Max Rubin, VP of Network Engineering. Doreen Newton took on the challenge to investigate alternatives to allow Contoso to proceed with getting the benefits of the cloud while not breaking rules for corporate compliance.
 
 To help design a solution using Azure technologies, Contoso has engaged a Microsoft Cloud Partner and Service Provider FusionTomo (FT). FT is a full-service hosting provider in North America certified to deliver Azure services with connectivity solutions and partnerships to provide ExpressRoute and other telecom services. They have datacenters located in Denver, London, Las Vegas, Dallas and Hong Kong SAR.
 
 Contoso has expressed to FT the need to embrace Microsoft Azure technologies as well as technologies that will help their organization with a more agile continuous integration and continuous deployment model for application deployment. Contoso also underscored the need for cooperation with Fabrikam's integration teams, including the intent to delegate some of the infrastructure management tasks. 
 
-With these goals in mind, Contoso has challenged FT to implement a hosted environment that will accommodate requirements regarding integration work to be carried out by Fabrikam. In addition, as internal workloads are transitioned to the hosting environment, Contoso internal audit team must retain its ability to track all of the infrastructure changes. For compliance purposes, the delegation model that will provide Contoso and Fabrikam staff with insight into the hosted environment must comply with the principle of least privilege. To satisfy Contoso governance requirements, FT must document standard operating procedures that will be carried out within the hosted infrastructure. 
+With these goals in mind, Contoso has challenged FT to implement a hosted environment that will accommodate requirements regarding integration work to be carried out by Fabrikam. In addition, as internal workloads are transitioned to the hosting environment, Contoso's internal audit team must retain its ability to track all of the infrastructure changes. For compliance purposes, the delegation model that will provide Contoso and Fabrikam staff with insight into the hosted environment must comply with the principle of least privilege. To satisfy Contoso governance requirements, FT must document standard operating procedures that will be carried out within the hosted infrastructure. 
 
 ![The Contoso Dallas Data Center diagram shows the flow between Contoso Mortgage customers and Contoso's web servers, application servers, and SQL servers.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image2.jpg "Contoso Dallas Data Center diagram")
 
@@ -100,7 +100,7 @@ Contoso is looking for FT to provide the following for their expansion into Nort
 
 7.  Design an integration model that would allow resource access for both Contoso and Fabrikam users.
 
-8.  Propose a self-service approach that will allow Contoso and Fabrikam developers provision their own resources from the service catalog offered by infrastructure teams. The scope of resources available in service catalog must be controlled centrally, with an oversight by designated Contoso and Fabrikam administrators.
+8.  Propose a self-service approach that will allow Contoso and Fabrikam developers to provision their own resources from the service catalog offered by infrastructure teams. The scope of resources available in service catalog must be controlled centrally, with an oversight by designated Contoso and Fabrikam administrators.
 
 9.  Recommend a procedure for delegation of permissions that would not only allow designated Fabrikam IT admins to manage Contoso infrastructure but also account for the need to provide limited access to the Contoso internal audit team.
 
@@ -142,7 +142,7 @@ Directions:  With all participants at your table, answer the following questions
 
 **Design**
 
-Directions: With all participants at your table, respond to the following questions on a flip chart:
+With all participants at your table, respond to the following questions on a flip chart:
 
 Design a hybrid-cloud architecture using Azure services that will make up the implementation for Contoso.
 
@@ -244,6 +244,6 @@ Directions: Tables reconvene with the larger group to hear the facilitator/SME s
 | Deploy the Azure App Service resource provider | <https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-deploy> |
 | Deploy the Azure Stack SQL resource provider | <https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-sql-resource-provider-deploy#deploy-the-resource-provider> |
 | Deploy apps to Azure and Azure Stack | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline> |
-| White paper | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
+| Azure Stack: An extension of Azure | <https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/> |
 | PowerShell for Azure Stack | <https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-powershell-install> |
 | Azure Stack marketplace | <https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-marketplace-azure-items> |
