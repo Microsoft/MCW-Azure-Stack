@@ -94,7 +94,7 @@ Contoso Finance is one of the largest banks in the United States with a signific
 
 In this exercise, you will create the subscriptions, offers, and plans that will be used by your Azure Stack Hub tenants. 
 
-Duration: 15-30 minutes
+Duration: 30 minutes
 
 ![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
 
@@ -194,7 +194,7 @@ Duration: 15-30 minutes
 
 ## Exercise 2: Deploy Contoso Financial Web Application
 
-Duration: 15-30 minutes
+Duration: 30 minutes
 
 In this exercise, you will provision a website using the Azure Stack Hub portal. The Web App will leverage the SQL DB running in Azure Stack Hub. This is the front-end website that customers will see when browsing for a Mortgage or other financial services products.
 
@@ -387,7 +387,7 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 ## Exercise 3: Deploy the customer offers Web API
 
-Duration: 15-30 minutes
+Duration: 30 minutes
 
 In this exercise, you will provision an Azure API App using the Azure Stack Hub portal. This API application is part of the front-end Web Applications and makes recommendations to the user on products the company wishes to highlight. The API App will leverage the SQL Database deployed previously.
 
@@ -483,7 +483,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
 ## Exercise 4: Automating backend processes with Azure functions 
 
-Duration: 15-30 minutes
+Duration: 30 minutes
 
 Contoso wants to automate the process of generating applications in PDF format by using Azure Functions. In this exercise, you will provision a Function App using the Azure Stack Hub portal. This Function App will watch the Azure Storage Queue for a message that the web application has submitted, process the application creating a PDF and storing it in Azure Blob Storage.
 
@@ -585,7 +585,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 ## Exercise 5: Deploy Contoso Finance Admin website
 
-Duration: 15-30 minutes
+Duration: 30 minutes
 
 In this exercise, you will provision the admin website to be used by employees to review applications submitted.
 
