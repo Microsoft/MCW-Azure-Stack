@@ -53,6 +53,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 <!-- /TOC -->
 
+
 # Azure Stack Migrate hands-on lab step-by-step
 
 ## Abstract and learning objectives
@@ -67,7 +68,7 @@ Contoso Finance is one of the largest banks in the United States with a signific
 
 ## Solution architecture
 
-![The Microsoft Azure Stack Hub is made up of Mortgage Applications and Mortgage Admin databases, Offerings API, Storage Queue Mortgage Applications, Mortgage Applications, and SQL Web App DB and Customer Data.](images/Hands-onlabstep-by-step-AzureStackimages/media/image2.png "Solution Architecture")
+![The Microsoft Azure Stack Hub is made up of Mortgage Applications and Mortgage Admin databases, Offerings API, Storage Queue Mortgage Applications, Mortgage Applications, and SQL Web App DB and Customer Data.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image2.png "Solution Architecture")
 
 ## Help references
 |    |            |
@@ -96,7 +97,7 @@ In this exercise, you will create the subscriptions, offers, and plans that will
 
 Duration: 30 minutes
 
-![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
+![Screenshot of an Azure Stack Hub Deployment Taxonomy.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image69.png "Azure Stack Hub deployment")
 
 ### Task 1: Create the Deployment Taxonomy
 
@@ -108,7 +109,7 @@ Duration: 30 minutes
 
 4. Select **Offers + Plans** followed by **Plan**.
 
-    ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Plan is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image70.png "Featured Apps blade")
+    ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Plan is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image70.png "Featured Apps blade")
 
 5. In the New Plan blade, enter the following configuration then select **Next: Services**.
 
@@ -118,15 +119,15 @@ Duration: 30 minutes
 
     - Resource group (Create new): **ContosoFinance**
 
-    ![New plan blade, fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image71.png "New plan blade")
+    ![New plan blade, fields are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image71.png "New plan blade")
 
 6. Next, check all of the **Services** except for **Microsoft.MySQLAdapter** and **Microsoft.Subscriptions** and select **Next: Quotas**.
 
-    ![Services are listed in the Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
+    ![Services are listed in the Services blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image73.png "Services")
 
 7. For Quotas, go through and choose the default quotas where available, with the exception of the **Microsoft.Web** entry. Next, select **Create New** next to the **Microsoft.Web** entry.
 
-    ![The Quotas blade with the default quotas selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
+    ![The Quotas blade with the default quotas selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image75.png "Quotas blade")
 
 8. On the **Create Quota** blade, specify the following information and select **OK**:
 
@@ -134,15 +135,15 @@ Duration: 30 minutes
 
     - App Service Plans: **10**
 
-    ![The Create Quota tab displays the specified settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image77.png "Create Quota blade")
+    ![The Create Quota tab displays the specified settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image77.png "Create Quota blade")
 
 9. Select **Review + Create** and then confirm the creation by selecting **Create**. The Plan will deploy immediately. 
 
-   ![The Quotas tab of the New plan blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image79.png "Quotas tab of the New plan blade")
+   ![The Quotas tab of the New plan blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image79.png "Quotas tab of the New plan blade")
 
 10. Select **+ Create a resource** on the left then select **Offers + Plans** followed by **Offer**.
 
-   ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Offer is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image81.png "Marketplace blade")
+   ![In the Marketplace blade, Offers and Plans is selected. In the Featured Apps blade, Offer is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image81.png "Marketplace blade")
 
 11. Update the New offer blade using the following inputs. Then, select **Next: Base plans**.
 
@@ -154,23 +155,23 @@ Duration: 30 minutes
 
     - Make this offer public? **No**
 
-   ![Fields in the New Offer blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image82.png "New Offer blade")
+   ![Fields in the New Offer blade are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image82.png "New Offer blade")
 
 12. On the **Base plans** blade, check **PROD-Plan-1** and select **Review + create** and then **Create**.
 
-   ![Screenshot of the Resource group blade. Under Name, a callout points to prod-offer-1.](images/Hands-onlabstep-by-step-AzureStackimages/media/image83.png "Resource group blade")
+   ![Screenshot of the Resource group blade. Under Name, a callout points to prod-offer-1.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image83.png "Resource group blade")
 
 15. Open the new offer after it is created. Notice the portal shows a warning stating: "**This offer is private, and users cannot see it**." To fix this, select the **Change state** button.
 
-   ![In the Offer blade, warning displays, and the Change state button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image85.png "Offer blade")
+   ![In the Offer blade, warning displays, and the Change state button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image85.png "Offer blade")
 
 16. Select **Public**.
 
-   ![Public is selected in the Change state menu.](images/Hands-onlabstep-by-step-AzureStackimages/media/image86.png "Change state menu")
+   ![Public is selected in the Change state menu.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image86.png "Change state menu")
 
 17. The portal will immediately provide a notification about the update to the offer.
 
-   ![Updated offer successfully message screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image87.png "Success")
+   ![Updated offer successfully message screenshot.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image87.png "Success")
 
 18. Next, open a new browser tab, and navigate to Azure Stack Hub User portal and select **Get a subscription**.
 
@@ -178,18 +179,18 @@ Duration: 30 minutes
     https://portal.local.azurestack.external
     ```
 
-   ![Azure Stack Hub dashboard screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image88.png "Azure Stack Hub dashboard")
+   ![Azure Stack Hub dashboard screenshot](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image88.png "Azure Stack Hub dashboard")
 
    > **Note**: This is the User portal Contoso Finance will use to provision and manage their Azure Stack Hub service.
 
 
 19. Give it the name: **Production** and select the **PROD-Offer-1** and select **Create**.
 
-   ![In the Get a subscription blade, the Display name is Production. In the Choose an offer blade, PROD-Offer-1 is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image90.png "Get a subscription blade")
+   ![In the Get a subscription blade, the Display name is Production. In the Choose an offer blade, PROD-Offer-1 is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image90.png "Get a subscription blade")
 
 20. You will need to Refresh the window to start using the new Subscription.
 
-   ![Under the Subscription created message, the Refresh button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image91.png "Refresh")
+   ![Under the Subscription created message, the Refresh button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image91.png "Refresh")
 
 
 ## Exercise 2: Deploy Contoso Financial Web Application
@@ -204,11 +205,11 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 2. On the **Web App** blade, select the **Production** subscription then select **App Service plan/Location**.
 
-    ![App Service plan/Location option screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image110.png "App service plan")
+    ![App Service plan/Location option screenshot.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image110.png "App service plan")
 
 3. Create a new App Service plan called **ContosoFinanceWebPlan** with the **D1 Shared** pricing tier and select **OK**.
 
-    ![Screenshot of the D1 Shared pricing tier option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image111.png "D1 pricing")
+    ![Screenshot of the D1 Shared pricing tier option.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image111.png "D1 pricing")
 
 4. On the **Web App** blade, specify the following configuration, and select **Create**:
 
@@ -216,13 +217,13 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     - Resource group: **(Create new) ContosoFinanceWeb**
 
-    ![Create blade fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image112.png "Create blade")
+    ![Create blade fields are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image112.png "Create blade")
 
 ### Task 2: Provision an Azure Storage Account
 
 1. In the Azure Stack Hub User portal, select **+ Create  a resource -\> Data + Storage -\> Storage account - blob, file, table, queue**.
 
-    ![In the New and Data and Storage blades, the previously defined options are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image113.png "New and Data and Storage blades")
+    ![In the New and Data and Storage blades, the previously defined options are selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image113.png "New and Data and Storage blades")
 
 2. On the **Basics** tab of the **Create storage account** blade, specify the following configuration options. Then select **Review + create** followed by **Create**.
 
@@ -240,21 +241,21 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     - Replication: **Locally-redundant storage (LRS)**
 
-    ![Create storage account blade fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image114.png "Create storage account blade")
+    ![Create storage account blade fields are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image114.png "Create storage account blade")
 
 3. After the storage account has completed provisioning, open the storage account by selecting **Go to resource**. 
 
 4. On the **Storage** account blade, scroll down and select **Access keys** on the left under **Settings**. 
 
-    ![Under Settings, Access keys is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image116.png "Access keys")
+    ![Under Settings, Access keys is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image116.png "Access keys")
 
 5. On the **Access keys** blade, select the copy button by **Key** to copy the **key1** key value. Paste the value into Notepad for later reference.
 
-    ![The key1 copy button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image117.png "copy button")
+    ![The key1 copy button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image117.png "copy button")
 
 6. On the **Access keys** blade, select the copy button by **Connection string** to copy the **key1** connection string value. Paste the value into Notepad for later reference.
 
-    ![The Connection string copy button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image119.png "Connection string copy")
+    ![The Connection string copy button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image119.png "Connection string copy")
 
     > **Note**: If the copy to clipboard button does not work, you may need to highlight the key and copy by right-clicking. Some versions of Internet Explorer have issues with this functionality.
 
@@ -263,7 +264,7 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 1. In the Azure Stack Hub User portal, select **+ Create a Resource -\> Data + Storage -\> SQL Database**.
 
-    ![In the Azure Stack Hub portal, in the New blade, Data and Storage is selected. In the Data and Storage blade, SQL Database is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image99.png "New blade")
+    ![In the Azure Stack Hub portal, in the New blade, Data and Storage is selected. In the Data and Storage blade, SQL Database is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image99.png "New blade")
 
 2. Complete the **Create Database** blade with the following:
 
@@ -277,23 +278,23 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     - Location: **local**
 
-    ![Screenshot of the Create database blade with fields set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image100.png "Create database blade")
+    ![Screenshot of the Create database blade with fields set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image100.png "Create database blade")
 
 3. Next, select **SKU**.
 
-    ![SKU option screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image101.png "SKU option")
+    ![SKU option screenshot.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image101.png "SKU option")
 
 4. Select the **MSSQL2017** SKU.
 
-    ![In the Select a SKU blade, ContosoFinanceSQLProd is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image102.png "Select a SKU blade")
+    ![In the Select a SKU blade, ContosoFinanceSQLProd is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image102.png "Select a SKU blade")
 
 5. Select **Login**.
 
-    ![Screenshot of the Login option.](images/Hands-onlabstep-by-step-AzureStackimages/media/image103.png "Login option")
+    ![Screenshot of the Login option.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image103.png "Login option")
 
 6. Select **Create a new login**.
 
-    ![Create a new login is selected in the Select a Login blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image104.png "Create a new login")
+    ![Create a new login is selected in the Select a Login blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image104.png "Create a new login")
 
 7. Complete the **New Login** blade using these inputs and select **OK**:
 
@@ -301,19 +302,19 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     - Password/Confirm Password: **Demo@pass123 - Note: Upper case D**
 
-    ![Fields in the New Login blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image105.png "New Login blade")
+    ![Fields in the New Login blade are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image105.png "New Login blade")
 
 8. Review the **Create Database** blade and select **Create**.
 
-    ![Fields in the Create Database blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image106.png "Create Database blade")
+    ![Fields in the Create Database blade are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image106.png "Create Database blade")
 
 9. Once the deployment completes, use the Azure Stack Hub User portal to locate the **ContosoFinanceWebDB** SQL Database in the **ContosoFinanceWeb** resource group. Select it to examine the details of the new SQL Database running in the Azure Stack Hub PaaS.
 
-    ![In the Resource group blade, under Name, ContosoFinanceWebDB is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image107.png "Resource group blade")
+    ![In the Resource group blade, under Name, ContosoFinanceWebDB is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image107.png "Resource group blade")
 
 10. On the **ContosoFinanceWebDB** page, copy the connection string to the clipboard and paste it into Notepad. 
 
-    ![In the SQL Database blade, the connection string is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image108.png "SQL Database blade")
+    ![In the SQL Database blade, the connection string is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image108.png "SQL Database blade")
 
     > **Note**: If the clipboard copy does not work, you can use the following sample text for your environment. You will need to alter this text to match your configuration.
 
@@ -325,7 +326,7 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 1. Navigate to your web app and on the left pane of the Web App, select **Configuration** under **Settings**.
 
-    ![Under Settings, Application settings is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image121.png "Application settings")
+    ![Under Settings, Application settings is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image121.png "Application settings")
 
 2. Select **+ New application setting**. Enter the following values in the dialog that appears and select **OK**:
 
@@ -333,11 +334,11 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     - Value: **Enter the Connection String for the Storage Account that you created earlier in this exercise**.
 
-    ![Fields in the App settings section are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image123.png "App settings")
+    ![Fields in the App settings section are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image123.png "App settings")
 
 3. Switch to Notepad. For the SQL Server Connection string copied from Azure Stack Hub, ensure that the password is set to `Demo@pass123` rather than a set of asterisks.
 
-    ![The password is set in the SQL DB connection string](images/Hands-onlabstep-by-step-AzureStackimages/media/DBPS.png "Connection string password")
+    ![The password is set in the SQL DB connection string](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/DBPS.png "Connection string password")
 
 4. Back on the web app configuration page in the Azure Stack Hub User portal, locate the **Connection Strings** section (right below the **Application settings** section) and add a new **Connection String** with the following values then select **OK**. 
 
@@ -349,7 +350,7 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
     **Note:** You may receive an error message that says *value is a required property on all connection string*. This can be ignored. 
 
-    ![The Connection strings fields display.](images/Hands-onlabstep-by-step-AzureStackimages/media/image124.png "Connection strings")
+    ![The Connection strings fields display.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image124.png "Connection strings")
 
 6. Select **Save** on the **Configuration** page and wait for that to complete. 
 
@@ -359,11 +360,11 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
 
 1. From within the web app blade, select **Deployment options (Classic)** under **Deployment** on the left.
 
-    ![Deployment options is selected under Deployment.](images/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
+    ![Deployment options is selected under Deployment.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
 
 2. Select **Choose Source**, then **External Repository**.
 
-    ![In the Deployment option blade, Choose source is selected. In the Choose source blade, External Repository is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
+    ![In the Deployment option blade, Choose source is selected. In the Choose source blade, External Repository is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
 
 3. Specify the following  as the **Repository URL** and select **OK**.
 
@@ -371,19 +372,19 @@ In this exercise, you will provision a website using the Azure Stack Hub portal.
     https://github.com/opsgility/contosofinanceweb
     ```
 
-    ![In the Deployment option blade, Repository ULR is set. In the Choose source blade, External Repository is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image126b.png "Deployment options")
+    ![In the Deployment option blade, Repository ULR is set. In the Choose source blade, External Repository is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image126b.png "Deployment options")
 
 4. Display the **Deployment options (Classic)** blade, monitor the deployment and wait until the web app is deployed.
 
 5. Select the **Overview** tab on the left, and then choose the URL. This should automatically open a new browser tab displaying the Contoso Finance web app.
 
-    ![The URL is selected in the App Service blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image127.png "App Service blade")
+    ![The URL is selected in the App Service blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image127.png "App Service blade")
 
     > **Note**: You may get an error about CORS. This can be ignored, as it will be configured later in the lab.
 
 6. Validate the website by selecting the **Products** link on the menu. If the products return, the connection to the database is successful.
 
-    ![The Products link is called out on the Contoso Finance webpage menu.](images/Hands-onlabstep-by-step-AzureStackimages/media/image128.png "Contoso Finance webpage")
+    ![The Products link is called out on the Contoso Finance webpage menu.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image128.png "Contoso Finance webpage")
 
 ## Exercise 3: Deploy the customer offers Web API
 
@@ -395,23 +396,23 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
 1. Using the Azure Stack Hub User portal, select **+Create a resource -\> Web + Mobile -\> API App**.
 
-    ![Screenshot of the API App button.](images/Hands-onlabstep-by-step-AzureStackimages/media/image129.png "API App")
+    ![Screenshot of the API App button.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image129.png "API App")
 
 2. On the new **API App** blade, **specify a unique name** for the App Name, select the **Production subscription**, and ensure the previously used Resource Group and App Service Plan are selected. Then select **Create**. 
 
 3. Navigate to the blade of the newly provisioned API app, on the **App Service** blade, scroll down, and select **CORS** within the **API** section of the left pane.
 
-    ![Under API, CORS is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image130.png "CORS")
+    ![Under API, CORS is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image130.png "CORS")
 
 4. In the **Allowed Origins** text box specify \* and select **Save**.
 
-    ![In the App Service blade, Allowed Origins is set to asterisk, and Save is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image131.png "App Service blade")
+    ![In the App Service blade, Allowed Origins is set to asterisk, and Save is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image131.png "App Service blade")
 
 5. Select **Configuration** on the left under **Settings**.
 
 6. Scroll down, and locate the **Connection strings** section.
 
-    ![Screenshot of the Connection strings section.](images/Hands-onlabstep-by-step-AzureStackimages/media/image133.png "Connection strings")
+    ![Screenshot of the Connection strings section.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image133.png "Connection strings")
 
 7. Add a new **Connection String** with the following values then select **OK**.
 
@@ -423,7 +424,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
     **Note:** You may receive an error message that says *value is a required property on all connection string*. This can be ignored. 
 
-    ![the Connection strings fields are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image133b.png "Connection strings")
+    ![the Connection strings fields are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image133b.png "Connection strings")
 
 8.  Select **Save** on the Configuration page. 
 
@@ -431,11 +432,11 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
 1. From within the API app blade, select **Deployment options (Classic)** under **Deployment** on the left.
 
-    ![Under Deployment, Deployment options is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
+    ![Under Deployment, Deployment options is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
 
 2. Select **Choose Source**, then **External Repository**.
 
-    ![In the Deployment option blade, Choose Source is selected. In the Choose source blade, External Repository is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
+    ![In the Deployment option blade, Choose Source is selected. In the Choose source blade, External Repository is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
 
 3. Specify the following as the **Repository URL** and select **OK**.
 
@@ -447,17 +448,17 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
 5. Switch to the **Overview** blade and copy the URL for the API app to the clipboard.
 
-    ![The URL is selected in the App Service blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image127b.png "App Service blade")
+    ![The URL is selected in the App Service blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image127b.png "App Service blade")
 
 ### Task 3: Update the Application Settings of the Web App with the API URL
 
 1. Open the ContosoFinanceWeb application in the Azure Stack Hub User portal and select **Configuration** on the left under **Settings**.
 
-    ![In the App Service blade, under settings, Application settings is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image134.png "App Service blade")
+    ![In the App Service blade, under settings, Application settings is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image134.png "App Service blade")
 
 2. Scroll down and locate the **Application settings** section.
 
-    ![Screenshot of the App settings section.](images/Hands-onlabstep-by-step-AzureStackimages/media/image135.png "App Service blade")
+    ![Screenshot of the App settings section.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image135.png "App Service blade")
 
 3. Add a new **Application Setting** with the following values and select **OK**. 
 
@@ -467,7 +468,7 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
     
     Example: <https://contosofinanceapi.appservice.local.azurestack.external/api/get>
 
-    ![Under App settings, offersAPIUrl and its URL are selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image136.png "App settings")
+    ![Under App settings, offersAPIUrl and its URL are selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image136.png "App settings")
 
     > **Note**: Ensure the API URL is using **SSL** (https://), or you will see a CORS errors when loading the webpage.
 
@@ -475,11 +476,11 @@ In this exercise, you will provision an Azure API App using the Azure Stack Hub 
 
 5. Connect to the URL of the **contosofinanceweb** Web App.
 
-    ![In the App Service blade, the URL link is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image137.png "App Service blade")
+    ![In the App Service blade, the URL link is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image137.png "App Service blade")
 
 6. On the homepage, you should see the latest offers populated from the offers API.
 
-    ![Screenshot of the Contoso Finance webpage.](images/Hands-onlabstep-by-step-AzureStackimages/media/image138.png "Contoso Finance webpage")
+    ![Screenshot of the Contoso Finance webpage.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image138.png "Contoso Finance webpage")
 
 ## Exercise 4: Automating backend processes with Azure functions 
 
@@ -495,11 +496,11 @@ Contoso wants to automate the process of generating applications in PDF format b
     https://github.com/opsgility/contosofinancefunction
     ```
 
-    ![In the Azure Stack Hub Host, the Clone or download button is selected, and under Clone with HTTPS, the Download ZIP button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image139.png "Azure Stack Hub Host")
+    ![In the Azure Stack Hub Host, the Clone or download button is selected, and under Clone with HTTPS, the Download ZIP button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image139.png "Azure Stack Hub Host")
 
 2. From the User portal, select **+ Create a resource -> Web + Mobile -> Function App**.
 
-    ![Function App option screenshot](images/Hands-onlabstep-by-step-AzureStackimages/media/image140.png "Function App option")
+    ![Function App option screenshot](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image140.png "Function App option")
 
 3. Specify the following settings on the **Create Function App** blade using the following inputs and select **Create**. 
 
@@ -521,11 +522,11 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 4. Using the Azure Stack Hub portal, open the Function App you just created, select **Functions** on the left, then **New function**.
 
-    ![The New function button is selected in the Function Apps blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image142.png "Function Apps blade")
+    ![The New function button is selected in the Function Apps blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image142.png "Function Apps blade")
 
 5. Scroll and locate the **Queue trigger** box and select **C\#**.
 
-    ![C\# is selected on the Queue trigger page.](images/Hands-onlabstep-by-step-AzureStackimages/media/image143.png "Queue trigger page")
+    ![C\# is selected on the Queue trigger page.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image143.png "Queue trigger page")
 
 6. Complete the **New function** blade using the following inputs and select **Create**.
 
@@ -535,13 +536,13 @@ Contoso wants to automate the process of generating applications in PDF format b
 
     - Queue name: **receiptgenerator (it must be this exact text)**
 
-    ![Fields in the New Function blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image144.png "New Function blade")
+    ![Fields in the New Function blade are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image144.png "New Function blade")
 
 7. Expand the **View files** area on the far right of the code window, and select **Upload**.
 
-    ![The view files section can be displayed on the far right.](images/Hands-onlabstep-by-step-AzureStackimages/media/image145.png "View files")
+    ![The view files section can be displayed on the far right.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image145.png "View files")
     
-    ![In the View files section, the Upload link is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image146.png "View files")
+    ![In the View files section, the Upload link is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image146.png "View files")
 
 8. Upload the following files from your LABVM in the **C:\\HoL\\contosofinancefunction-master** folder:
 
@@ -557,11 +558,11 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 9. Select **run.csx** to refresh the code editor.
 
-   ![Under View files, run.csx is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image147.png "View files")
+   ![Under View files, run.csx is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image147.png "View files")
 
 10. Select the **name of your function app** followed by **Platform features**, followed by **Configuration**.
 
-   ![The previously mentioned settings are selected in the Function Apps blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image148.png "Function Apps blade")
+   ![The previously mentioned settings are selected in the Function Apps blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image148.png "Function Apps blade")
 
 11. In the **Application settings** section, select **+ New application setting** to add a storage connection. This storage account will be used to write the PDFs to blob storage. Enter the following values then select **OK**. 
 
@@ -581,7 +582,7 @@ Contoso wants to automate the process of generating applications in PDF format b
 
 13. Select **Save** on the **Configuration** page.
 
-   ![The Save button is selected in the Function Apps blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image150.png "Function Apps blade")
+   ![The Save button is selected in the Function Apps blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image150.png "Function Apps blade")
 
 ## Exercise 5: Deploy Contoso Finance Admin website
 
@@ -595,17 +596,17 @@ In this exercise, you will provision the admin website to be used by employees t
 
 2. Select the **Production** subscription. Specify a unique name for the Web App URL, ensure the **same App Service Plan** as well as the **ContosoFinanceWeb** resource group you have used throughout the lab are selected then select **Create**.
 
-    ![Fields in the Create blade are set to the previously defined settings.](images/Hands-onlabstep-by-step-AzureStackimages/media/image152.png "Create blade")
+    ![Fields in the Create blade are set to the previously defined settings.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image152.png "Create blade")
 
 3. Navigate to the **App Service** blade for the Admin app recently provisioned.
 
-    ![The Contosofinanceadmin option screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image153.png "App Service blade")
+    ![The Contosofinanceadmin option screenshot.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image153.png "App Service blade")
 
 4. On the **App Service** blade, select **Configuration** under **Settings** on the left.
 
 5. Scroll down and locate the **Connection strings** section.
 
-    ![Screenshot of the App Services blade.](images/Hands-onlabstep-by-step-AzureStackimages/media/image155.png "App Services blade")
+    ![Screenshot of the App Services blade.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image155.png "App Services blade")
 
 6. Locate **Connection Strings** below App settings in the Azure Stack Hub User portal add a new **Connection String** with the following values then select **OK**.
 
@@ -623,11 +624,11 @@ In this exercise, you will provision the admin website to be used by employees t
 
 1. From within the web app blade, select **Deployment options (Classic)** under **Deployments** on the left.
 
-    ![Under Deployment, Deployment options is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
+    ![Under Deployment, Deployment options is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image125.png "Deployment options")
 
 2. Select **Choose Source**, and then **External Repository**.
 
-    ![In the Deployment option blade, Choose source is selected. In the Choose a source blade, External Repository is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
+    ![In the Deployment option blade, Choose source is selected. In the Choose a source blade, External Repository is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image126.png "Deployment options")
 
 3. Paste the following as the **Repository URL** and select **OK**.
 
@@ -641,33 +642,33 @@ In this exercise, you will provision the admin website to be used by employees t
 
 6. Since the application is fully deployed, you will want to see it work end to end. Open the URL for the contosofinanceweb Web App if you haven't already. The application will load in the browser.
 
-    ![Screenshot of the Contosofinanceweb Web App URL.](images/Hands-onlabstep-by-step-AzureStackimages/media/image157.png "Contosofinanceweb Web App URL")
+    ![Screenshot of the Contosofinanceweb Web App URL.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image157.png "Contosofinanceweb Web App URL")
 
-    ![Web App webpage screenshot.](images/Hands-onlabstep-by-step-AzureStackimages/media/image158.png "Web App")
+    ![Web App webpage screenshot.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image158.png "Web App")
 
 7. Notice how the API application loaded the Today's Offers area. Select through to one of the products and add it to your cart.
 
-    ![Screenshot of the Today\'s Offers webpage area.](images/Hands-onlabstep-by-step-AzureStackimages/media/image159.png "Today's Offers")
+    ![Screenshot of the Today\'s Offers webpage area.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image159.png "Today's Offers")
 
 8. Select **Apply**.
 
-    ![Under Product Name, the Apply button is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image160.png "Product Name")
+    ![Under Product Name, the Apply button is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image160.png "Product Name")
 
 9. Complete the Application and select **Continue** followed by **Complete Application** on the confirmation screen.
 
-   ![Screenshot of the Contoso Finance application.](images/Hands-onlabstep-by-step-AzureStackimages/media/image161.png "Contoso Finance application")
+   ![Screenshot of the Contoso Finance application.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image161.png "Contoso Finance application")
 
-   ![Screenshot of the Complete Application button.](images/Hands-onlabstep-by-step-AzureStackimages/media/image162.png "Complete Application")
+   ![Screenshot of the Complete Application button.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image162.png "Complete Application")
 
 10. Now, to act as an employee, open the Admin application to see the submitted applications. Select **Details** on one of the applications.
 
-   ![The URL link is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image163.png "URL link")
+   ![The URL link is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image163.png "URL link")
 
-   ![Screenshot of the Contoso webpage Contoso Finance Admin section.](images/Hands-onlabstep-by-step-AzureStackimages/media/image164.png "Contoso webpage")
+   ![Screenshot of the Contoso webpage Contoso Finance Admin section.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image164.png "Contoso webpage")
 
 11. Notice the details of the application. This data is stored in SQL DB running in PaaS on Azure Stack Hub. Select **Download application to view a sample PDF**.
 
-   ![Under Application Details, the Download application link is selected.](images/Hands-onlabstep-by-step-AzureStackimages/media/image165.png "Application Details")
+   ![Under Application Details, the Download application link is selected.](images.migrate/Hands-onlabstep-by-step-AzureStackimages/media/image165.png "Application Details")
 
 ## After the hands-on lab 
 
