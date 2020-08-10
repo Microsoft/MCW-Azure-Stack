@@ -24,35 +24,7 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 **Contents**
 
-<!-- TOC -->
-
-- [Trainer information](#trainer-information)
-  - [Role of the trainer](#role-of-the-trainer)
-  - [Whiteboard design session flow](#whiteboard-design-session-flow)
-  - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)
-  - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)
-- [Azure Stack Operate whiteboard design session student guide](#azure-stack-operate-whiteboard-design-session-student-guide)
-  - [Abstract and learning objectives](#abstract-and-learning-objectives)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
-    - [Customer situation](#customer-situation)
-    - [Customer needs](#customer-needs)
-    - [Customer objections](#customer-objections)
-    - [Infographic for common scenarios](#infographic-for-common-scenarios)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
-  - [Step 3: Present the solution](#step-3-present-the-solution)
-  - [Wrap-up](#wrap-up)
-  - [Additional references](#additional-references)
-- [Azure Stack Operate whiteboard design session trainer guide](#azure-stack-operate-whiteboard-design-session-trainer-guide)
-  - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)
-  - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)
-  - [Step 3: Present the solution](#step-3-present-the-solution-1)
-  - [Wrap-up](#wrap-up-1)
-  - [Preferred target audience](#preferred-target-audience)
-  - [Preferred solution](#preferred-solution)
-  - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)
-  - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Trainer information](#trainer-information)auto    - [Role of the trainer](#role-of-the-trainer)auto    - [Whiteboard design session flow](#whiteboard-design-session-flow)auto    - [Before the whiteboard design session: How to prepare](#before-the-whiteboard-design-session-how-to-prepare)auto    - [During the whiteboard design session: Tips for an effective whiteboard design session](#during-the-whiteboard-design-session-tips-for-an-effective-whiteboard-design-session)auto- [Azure Stack Operate whiteboard design session student guide](#azure-stack-operate-whiteboard-design-session-student-guide)auto    - [Abstract and learning objectives](#abstract-and-learning-objectives)auto    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)auto        - [Customer situation](#customer-situation)auto        - [Customer needs](#customer-needs)auto        - [Customer objections](#customer-objections)auto        - [Infographic for common scenarios](#infographic-for-common-scenarios)auto    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)auto    - [Step 3: Present the solution](#step-3-present-the-solution)auto    - [Wrap-up](#wrap-up)auto    - [Additional references](#additional-references)auto- [Azure Stack Operate whiteboard design session trainer guide](#azure-stack-operate-whiteboard-design-session-trainer-guide)auto    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study-1)auto    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution-1)auto    - [Step 3: Present the solution](#step-3-present-the-solution-1)auto    - [Wrap-up](#wrap-up-1)auto    - [Preferred target audience](#preferred-target-audience)auto    - [Preferred solution](#preferred-solution)auto    - [Checklist of preferred objection handling](#checklist-of-preferred-objection-handling)auto    - [Customer quote (to be read back to the attendees at the end)](#customer-quote-to-be-read-back-to-the-attendees-at-the-end)autoauto<!-- /TOC -->
 
 # Trainer information
 
@@ -216,7 +188,7 @@ Contoso has expressed to FT the need to embrace Microsoft Azure technologies as 
 
 In addition, Contoso has tasked FT with implementing a hosted environment that will accommodate requirements regarding integration work to be carried out by Fabrikam. It was agreed that this implementation will account for the need expressed by Contoso's internal audit team regarding its ability to track all of the infrastructure changes. Furthermore, for compliance purposes, the delegation model that will provide Contoso and Fabrikam staff with insight into the hosted environment must comply with the principle of least privilege. Finally, to satisfy Contoso governance requirements, FT must document standard operating procedures that will be carried out within the hosted infrastructure. 
 
-![The Contoso Dallas datacenter diagram shows the flow between Contoso Mortgage customers and Contoso's web servers, application servers, and SQL servers.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image2.png "Contoso datacenter diagram")
+![The Contoso Dallas datacenter diagram shows the flow between Contoso Mortgage customers and Contoso's web servers, application servers, and SQL servers.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image2.png "Contoso datacenter diagram")
 
 
 ### Customer needs 
@@ -269,7 +241,7 @@ Contoso is looking for FT to provide the following for their expansion into Nort
 
 ### Infographic for common scenarios
 
-![In the Infographic for Common scenarios, Microsoft Azure (public) is connected to the Microsoft Azure Stack (private / hosted) through Developers and IT.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image3.png "Common scenarios")
+![In the Infographic for Common scenarios, Microsoft Azure (public) is connected to the Microsoft Azure Stack (private / hosted) through Developers and IT.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image3.png "Common scenarios")
 
 ## Step 2: Design a proof of concept solution
 
@@ -484,7 +456,7 @@ After being engaged by Contoso and gathering the requirements from the client, F
 
 - An Azure Stack Hub integrated system running in the FT Toronto datacenter serving as the production environment for Canada customers.
 
-   ![Both Traffic manager and VPN connect Azure Public (South Central) with the Azure Stack Hub FT Dallas datacenter, which in turn connects via VPN to the Contoso on-premises datacenter. The DR location in the Azure Stack Hub FT Chicago datacenter is configured in the same manner, but it includes only a single instance of SQL Server VM.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image4.png "Preferred solution with disaster recovery")
+   ![Both Traffic manager and VPN connect Azure Public (South Central) with the Azure Stack Hub FT Dallas datacenter, which in turn connects via VPN to the Contoso on-premises datacenter. The DR location in the Azure Stack Hub FT Chicago datacenter is configured in the same manner, but it includes only a single instance of SQL Server VM.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image4.png "Preferred solution with disaster recovery")
 
 Design a hybrid-cloud architecture using Azure services that will make up the implementation for Contoso:
 
@@ -566,7 +538,7 @@ Design a hybrid-cloud architecture using Azure services that will make up the im
 
     Azure Traffic Manager parent profile will rely on the Geographic routing method to direct requests to specific instance (country or region) of the Mortgage Application web app. Within the web app interface, customers will have the option to explicitly select the instance of the app. 
 
-      ![The remote Azure Stack Hub region includes the components necessary to run the Mortgage Application, including two VMs running SQL Servers containing the Customer Data database configured in an Always On Availability Group, which replicates via transactional replication (after sensitive data is filtered out) to the central Azure Stack Hub region.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image4a.png "Preferred solution - remote office")
+      ![The remote Azure Stack Hub region includes the components necessary to run the Mortgage Application, including two VMs running SQL Servers containing the Customer Data database configured in an Always On Availability Group, which replicates via transactional replication (after sensitive data is filtered out) to the central Azure Stack Hub region.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image4a.png "Preferred solution - remote office")
 
 7.  Determine which identity provider and which identity topology you will use to facilitate authentication and authorization of the Azure Stack Hub environment.
 
@@ -639,7 +611,7 @@ Design a hybrid-cloud architecture using Azure services that will make up the im
 
     -   **Services/Resource Providers (RP)**: The base Resource Providers: Compute RP, Network RP, Storage RP and KeyVault RP will all be enabled. The Azure App RP will be enabled and configured (The Windows Server 2019 and SQL IaaS Extension for Azure Stack Hub).
 
-    ![The Azure Stack Hub Taxonomy displays as previously described.](images/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image5.png "Azure Stack Hub Taxonomy")
+    ![The Azure Stack Hub Taxonomy displays as previously described.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image5.png "Azure Stack Hub Taxonomy")
 
 13. Create a networks design.
 
