@@ -1,6 +1,6 @@
 # Azure Stack
 
-This Microsoft Cloud Workshop contains two workshops, Azure Stack Migrate, and Azure Stack Operate. Scenarios and abstracts for each are provided below.
+This Microsoft Cloud Workshop contains two solution paths, Azure Stack Migrate, and Azure Stack Operate. Scenarios and abstracts for each are provided below.
 
 # Azure Stack - Migrate
 
