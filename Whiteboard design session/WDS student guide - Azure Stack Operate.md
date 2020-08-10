@@ -24,7 +24,21 @@ Microsoft and the trademarks listed at https://www.microsoft.com/en-us/legal/int
 
 **Contents**
 
-<!-- TOC -->autoauto- [Azure Stack Operate whiteboard design session student guide](#azure-stack-operate-whiteboard-design-session-student-guide)auto    - [Abstract and learning objectives](#abstract-and-learning-objectives)auto    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)auto        - [Customer situation](#customer-situation)auto        - [Customer needs](#customer-needs)auto        - [Customer objections](#customer-objections)auto        - [Infographic for common scenarios](#infographic-for-common-scenarios)auto    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)auto    - [Step 3: Present the solution](#step-3-present-the-solution)auto    - [Wrap-up](#wrap-up)auto    - [Additional references](#additional-references)autoauto<!-- /TOC -->
+<!-- TOC -->
+
+- [Azure Stack Operate whiteboard design session student guide](#azure-stack-operate-whiteboard-design-session-student-guide)
+    - [Abstract and learning objectives](#abstract-and-learning-objectives)
+    - [Step 1: Review the customer case study](#step-1-review-the-customer-case-study)
+        - [Customer situation](#customer-situation)
+        - [Customer needs](#customer-needs)
+        - [Customer objections](#customer-objections)
+        - [Infographic for common scenarios](#infographic-for-common-scenarios)
+    - [Step 2: Design a proof of concept solution](#step-2-design-a-proof-of-concept-solution)
+    - [Step 3: Present the solution](#step-3-present-the-solution)
+    - [Wrap-up](#wrap-up)
+    - [Additional references](#additional-references)
+
+<!-- /TOC -->
 
 #  Azure Stack Operate whiteboard design session student guide
 
@@ -77,7 +91,7 @@ Contoso has expressed to FT the need to embrace Microsoft Azure technologies as 
 In addition, Contoso has tasked FT with implementing a hosted environment that will accommodate requirements regarding integration work to be carried out by Fabrikam. It was agreed that this implementation will account for the need expressed by Contoso's internal audit team regarding its ability to track all of the infrastructure changes. Furthermore, for compliance purposes, the delegation model that will provide Contoso and Fabrikam staff with insight into the hosted environment must comply with the principle of least privilege. Finally, to satisfy Contoso governance requirements, FT must document standard operating procedures that will be carried out within the hosted infrastructure. 
 
 
-![The Contoso Dallas Data Center diagram shows the flow between Contoso Mortgage customers and Contoso's web servers, application servers, and SQL servers.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image2.png "Contoso datacenter diagram")
+![The Contoso Dallas Data Center diagram shows the flow between Contoso Mortgage customers and Contoso's web servers, application servers, and SQL servers.](images/images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image2.png "Contoso datacenter diagram")
 
 
 ### Customer needs 
@@ -132,7 +146,7 @@ Contoso is looking for FT to provide the following for their expansion into Nort
 
 ### Infographic for common scenarios
 
-![In the Infographic for Common scenarios, Microsoft Azure (public) is connected to the Microsoft Azure Stack (private / hosted) through Developers and IT.](images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image3.png "Infographic for Common scenarios")
+![In the Infographic for Common scenarios, Microsoft Azure (public) is connected to the Microsoft Azure Stack (private / hosted) through Developers and IT.](images/images-operate/Whiteboarddesignsessiontrainerguide-AzureStackimages/media/image3.png "Infographic for Common scenarios")
 
 ## Step 2: Design a proof of concept solution
 
