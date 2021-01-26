@@ -1,5 +1,6 @@
-### Let us know how we’re doing!  
-Please take a moment to fill out the [Microsoft Cloud Workshop Survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyEtIpX7sDdChuWsXhzKJXJUNjFBVkROWDhSSVdYT0dSRkY4UVFCVzZBVy4u) and help us improve our offerings.
+# This workshop is archived and is no longer being maintained. Content is read-only.
+
+## For additional Data and AI content, please visit https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-stack/.
 
 # Azure Stack
 
