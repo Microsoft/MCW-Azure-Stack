@@ -1,6 +1,6 @@
 # This workshop is archived and is no longer being maintained. Content is read-only.
 
-## For additional Data and AI content, please visit https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-stack/.
+## For additional Azure Stack content, please visit https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-stack/.
 
 # Azure Stack
 
